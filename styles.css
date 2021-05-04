@@ -7,6 +7,17 @@ body{
     color: white;
 }
 
+#quiz{
+    background-color: black;
+    position: relative;
+    top: 200px;
+    left: 80px;
+}
+
+#quiz button{
+    display: block;
+}
+
 #video-container{
     width: 30%;
     margin-left: 35%;

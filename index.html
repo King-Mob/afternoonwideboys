@@ -38,7 +38,8 @@
                 function onPlayerReady(event) {
                   event.target.playVideo();
                   setInterval(()=>{
-                    triggerEvents(player.getCurrentTime());
+                    if(player.getPlayerState() == YT.PlayerState.PLAYING)
+                        triggerEvents(player.getCurrentTime());
                   },1000);
                 }
 
@@ -64,7 +65,26 @@
                                 "To check him for spying equipment",
                                 "To distract from life's despair"
                             ],
-                            correct: 1
+                            correct: 1,
+                            answered: false
+                        },
+                        {
+                            type: "size-change",
+                            time: 25,
+                            height: 1000,
+                            width: 1500,
+                        },
+                        {
+                            type: "size-change",
+                            time: 26,
+                            height: 390,
+                            width: 640,
+                        },
+                        {
+                            type: "background",
+                            time: 29,
+                            url: "https://media.giphy.com/media/xThuWcaa4U4XZQDgvm/giphy.gif",
+                            duration: 2000
                         }
                     ];
                 
@@ -76,6 +96,10 @@
                                 displayNote(event);
                             if(event.type == "quiz")
                                 displayQuiz(event);
+                            if(event.type == "size-change")
+                                displaySizeChange(event);
+                            if(event.type == "background")
+                                displayBackground(event);
                         }
                     })
                 }
@@ -91,32 +115,51 @@
                 }
           
                 function displayQuiz(quiz){
+                    if(quiz.answered)
+                        return;
+
                     player.pauseVideo();
 
                     const noteArea = document.getElementById("notes");
 
                     const quizElement = document.createElement("div");
+                    quizElement.id = 'quiz';
 
-                    //put the quiz element there and then add a style that puts it on top of the video? 
-                    console.log(quiz.question);
-                }
-                
-                // 5. The API calls this function when the player's state changes.
-                //    The function indicates that when playing a video (state=1),
-                //    the player should play for six seconds and then stop.
+                    const questionElement = document.createElement("p");
+                    questionElement.innerHTML = quiz.question;
+                    quizElement.append(questionElement);
 
-                /*
-                var done = false;
-                function onPlayerStateChange(event) {
-                  if (event.data == YT.PlayerState.PLAYING && !done) {
-                    setTimeout(pauseVideo, 6000);
-                    done = true;
-                  }
+                    quiz.answers.forEach((answer,index)=>{
+                        const answerElement = document.createElement("button");
+                        answerElement.innerHTML = answer;
+                        if(index == quiz.correct)
+                            answerElement.onclick = () => {
+                                player.playVideo();
+                                quizElement.style.display = 'none';
+                                quiz.answered = true;
+                            }
+                        else
+                            answerElement.onclick = () => {
+                                player.stopVideo();
+                                quizElement.style.display = 'none';
+                            }
+                        quizElement.append(answerElement);
+                    })
+
+                    noteArea.append(quizElement);
                 }
-                function pauseVideo() {
-                  player.pauseVideo();
+
+                function displaySizeChange(sizeChange){
+                    player.setSize(sizeChange.width,sizeChange.height);
                 }
-                */
+
+                function displayBackground(background){
+                    document.body.style.backgroundImage = `url(${background.url})`;
+                    document.body.style.backgroundSize = "cover";
+
+                    setTimeout(()=>{document.body.style.backgroundImage = 'none'},
+                        background.duration)
+                }
               </script>
         </div>
     </body>
