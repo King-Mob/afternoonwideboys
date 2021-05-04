@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <title>afternoonwideboys</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="home-page.js"></script>
+    </head>
+    <body>
+        <div id="video-container">
+            <div id="notes"></div>
+            <div id="player"></div>
+            <script id="player-script">
+                // 2. This code loads the IFrame Player API code asynchronously.
+                var tag = document.createElement('script');
+          
+                tag.src = "https://www.youtube.com/iframe_api";
+                var firstScriptTag = document.getElementById('player-script');
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+          
+                // 3. This function creates an <iframe> (and YouTube player)
+                //    after the API code downloads.
+                var player;
+                function onYouTubeIframeAPIReady() {
+                  player = new YT.Player('player', {
+                    height: '390',
+                    width: '640',
+                    videoId: 'XpYrc3eOr68',
+                    playerVars: {
+                      'playsinline': 1
+                    },
+                    events: {
+                      'onReady': onPlayerReady,
+                      //'onStateChange': onPlayerStateChange
+                    }
+                  });
+                }
+          
+                // 4. The API will call this function when the video player is ready.
+                function onPlayerReady(event) {
+                  event.target.playVideo();
+                  setInterval(()=>{
+                    triggerEvents(player.getCurrentTime());
+                  },1000);
+                }
+
+                const events = [
+                        {
+                            type: "note",
+                            time: 5,
+                            duration: 2000, 
+                            content: "Being straight is a curse"
+                        },
+                        {
+                            type: "note",
+                            time: 11,
+                            duration: 3000,
+                            content: "I love Tom's fashion sense"
+                        },
+                        {
+                            type: "quiz",
+                            time: 19,
+                            question: "Why do we go inside Tom's shirt?",
+                            answers: [
+                                "To caress his manly hair",
+                                "To check him for spying equipment",
+                                "To distract from life's despair"
+                            ],
+                            correct: 1
+                        }
+                    ];
+                
+                function triggerEvents(currentTime){
+                    events.forEach(event=>{
+                        const timeDifferential = currentTime - event.time;
+                        if(timeDifferential > 0 && timeDifferential < 1){
+                            if(event.type == "note")
+                                displayNote(event);
+                            if(event.type == "quiz")
+                                displayQuiz(event);
+                        }
+                    })
+                }
+
+                function displayNote(note){
+                    const noteArea = document.getElementById("notes");
+
+                    const noteElement = document.createElement("p");
+                    noteElement.innerHTML = note.content;
+                    noteArea.append(noteElement);
+                    setTimeout(()=>{noteElement.style.display = 'none'},
+                        note.duration)
+                }
+          
+                function displayQuiz(quiz){
+                    player.pauseVideo();
+
+                    const noteArea = document.getElementById("notes");
+
+                    const quizElement = document.createElement("div");
+
+                    //put the quiz element there and then add a style that puts it on top of the video? 
+                    console.log(quiz.question);
+                }
+                
+                // 5. The API calls this function when the player's state changes.
+                //    The function indicates that when playing a video (state=1),
+                //    the player should play for six seconds and then stop.
+
+                /*
+                var done = false;
+                function onPlayerStateChange(event) {
+                  if (event.data == YT.PlayerState.PLAYING && !done) {
+                    setTimeout(pauseVideo, 6000);
+                    done = true;
+                  }
+                }
+                function pauseVideo() {
+                  player.pauseVideo();
+                }
+                */
+              </script>
+        </div>
+    </body>
+</html>

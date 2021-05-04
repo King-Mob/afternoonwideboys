@@ -1,0 +1,14 @@
+body{
+    background-color: black;
+}
+
+#notes{
+    height: 5%;
+    color: white;
+}
+
+#video-container{
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 10%;
+}
