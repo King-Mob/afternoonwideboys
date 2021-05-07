@@ -1,8 +1,20 @@
-# This is a sample of an events file
+# Events File Template
 
-To add events, write them below the Events Start header and before the Events End header.
+To add events, write them in between "Events Start" and "Events End".
+This file is the actual one that currently creates the events running on the site.
 
-## Syntax
+## Events Start
+
+@0:05 note "Being straight is a curse" 2000
+@0:11 note "Tom's fashion sense is truly a blessing" 3000
+@0:19 quiz "Why do we go inside Tom's shirt?" "caress his manly hair" "check him for spying equipment" "distract from life's despair" 1
+@0:25 size-change 1000 1500
+@0:26 size-change 390 640
+@0:29 background "https://media.giphy.com/media/xThuWcaa4U4XZQDgvm/giphy.gif" 700
+
+## Events End
+
+## Instructions
 
 ### Note
 
@@ -35,16 +47,7 @@ e.g.
 
 Who knows what events will be added next?
 
-## Events Start
-
-@0:05 note "Being straight is a curse" 2000
-@0:11 note "Tom's fashion sense is truly a blessing" 3000
-@0:19 quiz "Why do we go inside Tom's shirt?" "caress his manly hair" "check him for spying equipment" "distract from life's despair" 1
-@0:25 size-change 1000 1500
-@0:26 size-change 390 640
-@0:29 background "https://media.giphy.com/media/xThuWcaa4U4XZQDgvm/giphy.gif" 700
-
-## Events End
+## Note on  the format format
 
 The events are transformed into the following JavaScript Object Notation, or JSON. I might just have people upload this, because it's not that much more complicated than the sytnax I've created above. However I've written the transformer now, so I'd hate for all that great work to go to waste.
 

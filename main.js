@@ -47,7 +47,7 @@ xhr.send();
 const uploadElement = document.getElementById("upload");
 uploadElement.addEventListener("change", handleUpload, false);
 function handleUpload() {
-  const file = this.files[0]; /* now you can work with the file list */
+  const file = this.files[this.files.length - 1];
   file.text().then(fileText =>{
       events = parseEvents(fileText);
       player.seekTo(0,true);
