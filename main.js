@@ -41,7 +41,7 @@ xhr.onreadystatechange = function() {
         events = parseEvents(eventsFile);
     }
 }
-xhr.open('GET', 'events.md');
+xhr.open('GET', 'events.txt');
 xhr.send();
 
 const uploadElement = document.getElementById("upload");
