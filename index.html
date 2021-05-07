@@ -2,17 +2,22 @@
     <head>
         <title>afternoonwideboys</title>
         <link rel="stylesheet" href="styles.css">
-        <script src="home-page.js"></script>
     </head>
     <body>
         <div id="video-container">
             <div id="notes"></div>
             <div id="player"></div>
-            <script id="player-script" src="scripts.js"></script>
             <div id="button-container">
-                <button id="download">download events</button>
-                <button id="upload">upload events</button>
+                <label for="upload">Upload events file</label>
+                <input type="file" id="upload"/>
+                <br>
+                <br>
+                <a href="events.md" download="events_template.md">
+                    Download events template file
+                </a>
             </div>
+            <script src="modules/parseEvents.js"></script>
+            <script id="player-script" src="main.js"></script>
         </div>
     </body>
 </html>

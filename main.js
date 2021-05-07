@@ -31,52 +31,28 @@ function onPlayerReady(event) {
     },1000);
 }
 
-let eventsFile = "events.md";
+let eventsFile;
+let events = [];
 
-const events = [
-    {
-        type: "note",
-        time: 5,
-        duration: 2000, 
-        content: "Being straight is a curse"
-    },
-    {
-        type: "note",
-        time: 11,
-        duration: 3000,
-        content: "I love Tom's fashion sense"
-    },
-    {
-        type: "quiz",
-        time: 19,
-        question: "Why do we go inside Tom's shirt?",
-        answers: [
-            "caress his manly hair",
-            "check him for spying equipment",
-            "distract from life's despair"
-        ],
-        correct: 1,
-        answered: false
-    },
-    {
-        type: "size-change",
-        time: 25,
-        height: 1000,
-        width: 1500,
-    },
-    {
-        type: "size-change",
-        time: 26,
-        height: 390,
-        width: 640,
-    },
-    {
-        type: "background",
-        time: 29,
-        url: "https://media.giphy.com/media/xThuWcaa4U4XZQDgvm/giphy.gif",
-        duration: 700
+let xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        eventsFile = xhr.responseText;
+        events = parseEvents(eventsFile);
     }
-    ];
+}
+xhr.open('GET', 'events.md');
+xhr.send();
+
+const uploadElement = document.getElementById("upload");
+uploadElement.addEventListener("change", handleUpload, false);
+function handleUpload() {
+  const file = this.files[0]; /* now you can work with the file list */
+  file.text().then(fileText =>{
+      events = parseEvents(fileText);
+      player.seekTo(0,true);
+  })
+}
                 
 function triggerEvents(currentTime){
     events.forEach(event=>{

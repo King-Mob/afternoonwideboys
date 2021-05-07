@@ -1,6 +1,6 @@
 # This is a sample of an events file
 
-To add events, write them below the Events Start header.
+To add events, write them below the Events Start header and before the Events End header.
 
 ## Syntax
 
@@ -14,7 +14,7 @@ e.g. @0:01 note "I love notes" 1000
 
 @m:ss quiz "question?" "answer" "answer" "answer" correct-answer-number
 
-the correct-answer number is 0-indexed, meaning that the first answer is number 0, the second is 1 etc.
+the correct-answer number is 0-indexed, meaning that the first answer is number 0, the second is 1 etc. You can have up to 10 answers, because the correct answer is 1 digit, so can be 0 to 9. I suppose you could have a hundred answers, but none of the last 90 could be correct.
 
 e.g. @0:01 quiz "which is best?" "snow" "ice" "hail" 2
 this means that "hail" is the correct answer
@@ -38,8 +38,58 @@ Who knows what events will be added next?
 ## Events Start
 
 @0:05 note "Being straight is a curse" 2000
-@0:11 note Tom's fashion sense is truly a blessing 3000
+@0:11 note "Tom's fashion sense is truly a blessing" 3000
 @0:19 quiz "Why do we go inside Tom's shirt?" "caress his manly hair" "check him for spying equipment" "distract from life's despair" 1
 @0:25 size-change 1000 1500
 @0:26 size-change 390 640
 @0:29 background "https://media.giphy.com/media/xThuWcaa4U4XZQDgvm/giphy.gif" 700
+
+## Events End
+
+The events are transformed into the following JavaScript Object Notation, or JSON. I might just have people upload this, because it's not that much more complicated than the sytnax I've created above. However I've written the transformer now, so I'd hate for all that great work to go to waste.
+
+```const events = [
+    {
+        type: "note",
+        time: 5,
+        duration: 2000, 
+        content: "Being straight is a curse"
+    },
+    {
+        type: "note",
+        time: 11,
+        duration: 3000,
+        content: "I love Tom's fashion sense"
+    },
+    {
+        type: "quiz",
+        time: 19,
+        question: "Why do we go inside Tom's shirt?",
+        answers: [
+            "caress his manly hair",
+            "check him for spying equipment",
+            "distract from life's despair"
+        ],
+        correct: 1,
+        answered: false
+    },
+    {
+        type: "size-change",
+        time: 25,
+        height: 1000,
+        width: 1500,
+    },
+    {
+        type: "size-change",
+        time: 26,
+        height: 390,
+        width: 640,
+    },
+    {
+        type: "background",
+        time: 29,
+        url: "https://media.giphy.com/media/xThuWcaa4U4XZQDgvm/giphy.gif",
+        duration: 700
+    }
+];
+```
