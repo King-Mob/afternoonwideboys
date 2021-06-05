@@ -52,6 +52,17 @@ fuck it, other people's items can be public, not going to check for tokens on th
 got all those in.
 
 
+So, after one day, there's a pretty robust set of routes. Can copy the one for texts for videos and audios.
+
+Would be good to get texts for a specific user.
+
+GET texts/{userId}
+
+and we can add profiles and stuff maybe.
+
+The hardest part is going to be deploying to heroku I think. I don't really have an apetite for it.
+
+
 
 
 
