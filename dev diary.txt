@@ -1,0 +1,62 @@
+afternoonwideboys.com project plan
+
+
+1. adapt the twine back-end for accounts system -> look into heroku and what is needed there -> design database -> done, and I think I'll probably adapt the restaurant back-end more likely.
+
+2. create react app for the front-end -> think about rest of design
+3. design user interface
+4. add users
+5. possibly create discord server
+
+
+=========
+
+If we say the MVP is people creating accounts and earning points as they create, then relationships can be ignored for now.
+
+So we can do a login token perhaps.
+
+ok, first step creating the database
+
+done.
+
+next, initialise back-end. I think do it with npm?
+
+done.
+
+look up how to create a route and export it to another file, then add it to the thing.
+
+then do that for the registration route.
+
+
+built the reg and login routes.
+
+text? 
+
+GET all texts
+POST a new text -> broken this because of the timestamp thing, no it was my SQL injection vulnerable code
+
+Bug: can't use quotes or single quotes in text posts
+Fix: use something else for the query interactions so that we can use quotes and not worry about sql injection
+
+items?
+
+GET all items for my user account: select
+POST a new item: insert
+PUT update the quantity on one of my items: update
+
+the get should be a view on items with descriptions
+
+fuck it, other people's items can be public, not going to check for tokens on that one.
+
+
+got all those in.
+
+
+
+
+
+
+
+
+
+
