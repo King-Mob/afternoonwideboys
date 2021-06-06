@@ -22,7 +22,7 @@ const User = () => {
 
     useEffect(()=>{
         getUser();
-    },[getUser])
+    },[])
 
     return (
         <div>
