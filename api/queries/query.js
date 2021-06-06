@@ -16,7 +16,7 @@ let pool,_db;
 
 if(process.env.NODE_ENV == 'production' ){
     pool = new Client(process.env.DATABASE_URL+"?ssl=true");
-    _db = massive(process.env.DATABASE_URL);
+    _db = massive(process.env.DATABASE_URL+"?ssl=true");
 }
 else{
     pool = new Pool(dbConfig);
