@@ -125,9 +125,9 @@ for heroku, need to make an env file, then have config reference that file.
 
 then provision db, and migrate to it.
 
+postgres://user:password@host:post/database
 
-
-
+restarting computer to reset pg cache
 
 
 
