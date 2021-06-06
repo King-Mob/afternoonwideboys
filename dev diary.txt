@@ -131,15 +131,25 @@ restarting computer to reset pg cache
 
 so, this terrible hack requires that I have the package.json for the api eternally in the monorepo folder
 
+remember to look at 
 
 migrate database -> 
 create pg dump file. 
 host it on the webapp as a public file
+
+https://inspiring-cori-74a3c0.netlify.app/migration.sql
+
 reference using heroku
 
+heroku pg:backups:restore "https://inspiring-cori-74a3c0.netlify.app/migration.sql" -a afternoonwideboys-api
 
+migration successful
 
 change 
+
+ok, so, something is up with the server.
+
+
 
 
 
