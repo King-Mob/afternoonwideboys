@@ -129,6 +129,17 @@ postgres://user:password@host:post/database
 
 restarting computer to reset pg cache
 
+so, this terrible hack requires that I have the package.json for the api eternally in the monorepo folder
+
+
+migrate database -> 
+create pg dump file. 
+host it on the webapp as a public file
+reference using heroku
+
+
+
+change 
 
 
 
