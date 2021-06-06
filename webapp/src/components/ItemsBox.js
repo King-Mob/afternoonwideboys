@@ -11,7 +11,7 @@ const ItemsBox = ({userId, change}) => {
 
     useEffect(()=>{
         getItems();
-    },[change]);
+    },[change,getItems]);
 
     return (
         <div>
