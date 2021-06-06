@@ -49,7 +49,9 @@ const textsRoutes = [
 
             const token = request.payload.token;
 
-            if(await isTokenValid(token) == false)
+            const tokenValid = await isTokenValid(token);
+
+            if(tokenValid == false)
                 return {result: "error", errorMessage: "invalid token to post text"}
 
             const result = createText(newText,userId);

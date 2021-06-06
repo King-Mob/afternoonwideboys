@@ -47,6 +47,8 @@ const authRoutes = [
         handler: async(request)=> {
             const result = isTokenValid(request.payload.token);
 
+            console.log(result)
+
             return result;
         }
     },

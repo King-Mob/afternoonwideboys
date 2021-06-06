@@ -1,10 +1,13 @@
-const {pool,_db} = require('./query');
+const {_db} = require('./query');
 
 const getAllTexts = async () => {
-    const texts = await pool.query(`SELECT * FROM "TextsWithCreators"`);
+    const db = await _db;
+
+    const texts = await db.TextsWithCreators.find({});
+
     result = {
         success: true,
-        data: texts.rows
+        data: texts
     };
 
     return result;

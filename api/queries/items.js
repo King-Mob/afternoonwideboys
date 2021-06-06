@@ -1,50 +1,46 @@
-const {pool} = require('./query');
+const {_db} = require('./query');
 
 const getItems = async (userId) => {
-    const itemQuery = `SELECT * FROM "ItemsWithInfo" WHERE "UserOwner"=${userId}`;
-    const result = await pool.query(itemQuery);
+    const db = await _db;
 
-    return result.rows;
+    items = await db.ItemsWithInfo.find({
+        UserOwner: userId
+    });
+
+    return items;
 }
 
 const createItem = async (newItem) => {
-    const lastItem = await pool.query('SELECT "Id" FROM "Items" ORDER BY "Id" DESC LIMIT 1;');
-    const newItemId = parseInt(lastItem.rows[0]["Id"]) + 1;
+    const db = await _db;
 
-    const itemQuery =   `INSERT INTO "Items" 
-                        VALUES (
-                            ${newItemId},
-                            ${newItem.userOwner},
-                            ${newItem.type},
-                            ${newItem.quantity}
-                        );`;
+    const lastItem = await db.Items.findOne({}, {
+        order: [{field: 'Id', direction: 'desc'}]
+    });
 
-    try{
-        await pool.query(itemQuery);
-    }
-    catch(error){
-        console.log(error)
-    }
+    const newItemId = parseInt(lastItem.Id) + 1;
 
-    return "success";
+    await db.Items.insert({
+        Id: newItemId,
+        UserOwner: newItem.userOwner,
+        Type: newItem.type,
+        Quantity: newItem.quantity
+    });
+    
+    return {result: "text successfully created"};
 }
 
 const updateItem = async (updatedItem) => {
-    const itemQuery = `UPDATE "Items"
-                    SET "Type" = ${updatedItem.type},
-                        "UserOwner" = ${updatedItem.userOwner},
-                        "Quantity" = ${updatedItem.quantity}
-                    WHERE "Id" = ${updatedItem.id};
-                    `;
+    const db = await _db;
 
-    try{
-        await pool.query(itemQuery);
-    }
-    catch(error){
-        console.log(error)
-    }
-
-    return "success"
+    await db.Items.update({
+        Id: updatedItem.id
+    },{
+        Type: updatedItem.type,
+        UserOwner: updatedItem.userOwner,
+        Quantity: updatedItem.quantity,
+    });
+    
+    return {result: "items successfully created"};
 }
 
 module.exports = {
