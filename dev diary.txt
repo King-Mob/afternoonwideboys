@@ -170,7 +170,7 @@ then I could add the invite codes by psql and the site would exist
 
 
 
-
+actually just going to create a route called invite
 
 
 
