@@ -9,6 +9,7 @@ const dbConfig = {
     port: process.env.PORT,
 }
 
+
 const pool = new Pool(dbConfig);
 const _db = massive(dbConfig);
 
