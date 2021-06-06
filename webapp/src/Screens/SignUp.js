@@ -47,8 +47,8 @@ const SignUp = ({user, setUser}) => {
             }
             <input value={name} onChange={(e)=>setName(e.target.value)} placeholder="name"></input>
             <input value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="email address"></input>
-            <input value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="password"></input>
-            <input value={passwordConfirm} onChange={(e)=>setPasswordConfirm(e.target.value)} placeholder="confirm password"></input>
+            <input value={password} type="password" onChange={(e)=>setPassword(e.target.value)} placeholder="password"></input>
+            <input value={passwordConfirm} type="password" onChange={(e)=>setPasswordConfirm(e.target.value)} placeholder="confirm password"></input>
             <input value={inviteToken} onChange={(e)=>setInviteToken(e.target.value)} placeholder="invite code"></input>
             <p onClick={handleSubmit}>Submit</p>
             {error &&

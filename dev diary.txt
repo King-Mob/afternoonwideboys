@@ -155,9 +155,24 @@ so let's switch them all to that now then.
 
 then connect over the site.
 
+done
+
+
+
+Minor changes: 
+
+- load all texts with newest at the top -> done
+- add the password type input on passwords -> done
+- put send next to box, and add inactive style -> done
 
 
 then I could add the invite codes by psql and the site would exist
+
+
+
+
+
+
 
 
 

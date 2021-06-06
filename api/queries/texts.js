@@ -3,7 +3,9 @@ const {_db} = require('./query');
 const getAllTexts = async () => {
     const db = await _db;
 
-    const texts = await db.TextsWithCreators.find({});
+    const texts = await db.TextsWithCreators.find({},{
+        order: [{field: 'Id', direction: 'desc'}]
+    });
 
     result = {
         success: true,

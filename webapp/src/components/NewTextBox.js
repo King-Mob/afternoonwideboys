@@ -11,14 +11,20 @@ const NewTextBox = ({user,change,setChange}) => {
 
             await awardAfternoonWideBucks(user.id,10,user.token);
 
+            setNewText("");
+
             setChange(change+1);
         }
     };
 
     return (
-        <div>
+        <div style={{display: 'flex', flexDirection: 'row'}}>
             <input value={newText} onChange={e=>setNewText(e.target.value)} placeholder="What?"></input>
-            <p onClick={handleSend}>Send</p>
+            <p style={{
+                display: 'inline', 
+                opacity: newText.length > 0? 1: 0.5
+                }}
+                onClick={handleSend}>Send</p>
         </div>
     )
 }
