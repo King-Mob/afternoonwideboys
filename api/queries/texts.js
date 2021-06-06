@@ -4,7 +4,7 @@ const getAllTexts = async () => {
     const db = await _db;
 
     const texts = await db.TextsWithCreators.find({},{
-        order: [{field: 'Id', direction: 'desc'}]
+        order: [{field: 'Created', direction: 'desc'}]
     });
 
     result = {
