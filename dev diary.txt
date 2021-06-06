@@ -149,8 +149,15 @@ change
 
 ok, so, something is up with the server.
 
+the requests work with the massive thing.
+
+so let's switch them all to that now then.
+
+then connect over the site.
 
 
+
+then I could add the invite codes by psql and the site would exist
 
 
 
