@@ -7,8 +7,8 @@ const init = async () => {
     const {usersRoutes} = require('./routes/users');
 
     const server = Hapi.server({
-        port: 4000,
-        host: '192.168.0.10'
+        port: process.env.PORT,
+        host: process.env.HOST
     });
 
     const routes = [

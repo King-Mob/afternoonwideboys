@@ -6,10 +6,10 @@ const massive = require('massive');
 
 const dbConfig = {
     user: process.env.USER,
-    host: process.env.HOST,
+    host: process.env.DATABASE_HOST,
     database: process.env.DATABASE,
     password: process.env.PASSWORD,
-    port: process.env.PORT,
+    port: process.env.DATABASE_PORT,
 }
 
 let pool,_db;
