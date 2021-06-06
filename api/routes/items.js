@@ -29,13 +29,12 @@ const itemsRoutes = [
             }
         },
         handler: async(request)=> {
-            const {token,userId,newItem} = request.payload;
-
+            const {token,newItem} = request.payload;
 
             if(await isTokenValid(token) == false)
                 return {result: "error", errorMessage: "invalid token to create item"}
 
-            const result = createItem(userId,newItem);
+            const result = createItem(newItem);
 
             return result;
         }
@@ -51,7 +50,6 @@ const itemsRoutes = [
         },
         handler: async(request)=> {
             const {token,updatedItem} = request.payload;
-
 
             if(await isTokenValid(token) == false)
                 return {result: "error", errorMessage: "invalid token to update item"}

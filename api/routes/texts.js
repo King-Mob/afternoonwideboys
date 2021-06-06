@@ -1,7 +1,7 @@
 //get texts, create and update them
 
 const {isTokenValid} = require('../queries/auth');
-const {getAllTexts,createText} = require('../queries/texts');
+const {getAllTexts, getTextsFromUser, createText} = require('../queries/texts');
 
 const textsRoutes = [
     {
@@ -15,6 +15,21 @@ const textsRoutes = [
         },
         handler: async()=> {
             const result = getAllTexts();
+
+            return result;
+        }
+    },
+    {
+        method: 'GET',
+        path: '/texts/{userId}',
+        config: {
+            cors: {
+                origin: ['*'],
+                additionalHeaders: ['cache-control', 'x-requested-with']
+            }
+        },
+        handler: async(request)=> {
+            const result = getTextsFromUser(request.params.userId);
 
             return result;
         }

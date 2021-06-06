@@ -7,16 +7,16 @@ const getItems = async (userId) => {
     return result.rows;
 }
 
-const createItem = async (userId, newItem) => {
+const createItem = async (newItem) => {
     const lastItem = await pool.query('SELECT "Id" FROM "Items" ORDER BY "Id" DESC LIMIT 1;');
     const newItemId = parseInt(lastItem.rows[0]["Id"]) + 1;
 
     const itemQuery =   `INSERT INTO "Items" 
                         VALUES (
                             ${newItemId},
-                            ${userId},
+                            ${newItem.userOwner},
                             ${newItem.type},
-                            1
+                            ${newItem.quantity}
                         );`;
 
     try{

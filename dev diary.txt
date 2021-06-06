@@ -5,7 +5,7 @@ afternoonwideboys.com project plan
 
 2. create react app for the front-end -> think about rest of design
 3. design user interface
-4. add users
+4. add users, got 2 invite tokens to create already
 5. possibly create discord server
 
 
@@ -60,7 +60,73 @@ GET texts/{userId}
 
 and we can add profiles and stuff maybe.
 
-The hardest part is going to be deploying to heroku I think. I don't really have an apetite for it.
+The hardest part is going to be deploying to heroku I think. I don't really have an apetite for it as a fun thing to do.
+
+So, having installed massive.js and seen that it's how I want to do the database interactions, the question is, what to do next.
+
+I could go through and switch everything over to that (nope, not right now)
+
+Make the front end.
+
+Closer to what I do for work normally, so less exciting I think.
+
+But let's have a look see.
+
+
+If this existed, I think I would post stuff on it first.
+
+
+======
+
+1. index page
+
+2. login has link to signup page, successful login go to index page
+
+3. on signup, if the invite token is valid, go to index page
+
+4. index page has just all the texts and a way to add new ones (if logged in)
+
+
+I need a context for if they're logged in, and have a token.
+
+created the sign up screen basically. 
+
+1. need the fetch to be right.
+2. need to look at what the api is returning so it's matched up to what the front-end expects
+
+login is easier to test. so i'm going to do a login page
+
+login worked nicely
+
+could make a cookie to stay logged in. leave that.
+
+
+check sign up works. it does.
+
+at this point, it seems to be going so smoothly, that if I'm able to deploy the api to heroku, then I can link it to netlify and have a whale of a time. challenge -> config files, heroku deploy and pg provision is all new.
+
+
+get create text working, and the currency display I think. get everything on the index card done, then /attempt/ to deploy
+
+
+user pages -> done
+items -> need to get some items man. -> done
+styling -> i think it would more fun to deploy, then I can do styles later
+
+api: fix the text string thing 
+
+is all that's left on the card.
+
+then if I feel like it, try to deploy.
+
+----
+
+for heroku, need to make an env file, then have config reference that file.
+
+then provision db, and migrate to it.
+
+
+
 
 
 

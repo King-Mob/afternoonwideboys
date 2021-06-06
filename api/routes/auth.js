@@ -2,7 +2,7 @@
 registration, login routes
 TO DO: reset password routes
 */
-const {createUser,tryLogin} = require('../queries/auth');
+const {createUser,tryLogin,isTokenValid} = require('../queries/auth');
 
 const authRoutes = [
     {
@@ -31,6 +31,21 @@ const authRoutes = [
         },
         handler: async(request)=> {
             const result = tryLogin(request.payload);
+
+            return result;
+        }
+    },
+    {
+        method: 'POST',
+        path: '/trytoken',
+        config: {
+            cors: {
+                origin: ['*'],
+                additionalHeaders: ['cache-control', 'x-requested-with']
+            }
+        },
+        handler: async(request)=> {
+            const result = isTokenValid(request.payload.token);
 
             return result;
         }

@@ -31,10 +31,10 @@ const createUser = async (newUser) => {
     const token = await pool.query(`SELECT * FROM "Tokens" WHERE "Value"='${newUser.token}'`)
 
     if(!token.rows[0])
-        return {result: "error", errorMessage: "Invite code not recognised."};
+        return {success:false, errorMessage: "Invite code not recognised."};
 
     if(parseInt(token.rows[0]["Type"]) != 1)
-        return {result: "error", errorMessage: "Invite code may have already been used."};
+        return {success:false, errorMessage: "Invite code may have already been used."};
 
     const lastUser = await pool.query('SELECT "Id" FROM "Users" ORDER BY "Id" DESC LIMIT 1;');
     const newUserId = parseInt(lastUser.rows[0]["Id"]) + 1;
@@ -59,12 +59,12 @@ const createUser = async (newUser) => {
 
     try{
         await pool.query(userQuery);
-        result = {result: "success"};
+        result = {success: true};
         await pool.query(tokenQuery);
         createRoleAndToken(newUserId);
     }
     catch(error){
-        result = {result: "error", errorMessage: "something went wrong", error};
+        result = {success:false, errorMessage: "something went wrong", error};
     }
 
     return result;
@@ -74,18 +74,23 @@ const tryLogin = async (potentialUser) => {
     const user = await pool.query(`SELECT * FROM "Users" WHERE "Email"='${potentialUser.email}'`);
 
     if(!user.rows[0])
-        return {result: "error", errorMessage: "No user found with this email"};
+        return {success: false, errorMessage: "No user found with this email"};
 
     if(user.rows[0]["Password"] == potentialUser.password){
         const role = await pool.query(`SELECT * FROM "Roles" WHERE "UserHaver"=${parseInt(user.rows[0]["Id"])}`);
         const token = await pool.query(`SELECT * FROM "Tokens" WHERE "Id"=${role.rows[0]["TokenId"]}`)
         return {
-            role: role.rows[0],
-            token: token.rows[0]
+            success: true,
+            data: {
+                id: user.rows[0].Id,
+                name: user.rows[0].Name,
+                email: user.rows[0].Email,
+                token: token.rows[0].Value
+            }
         }
     }
     else
-        return {result: "error", errorMessage: "Password failed to match with email."}
+        return {success:false, errorMessage: "Password failed to match with email."}
 }
 
 const isTokenValid = async (potentialToken) => {
