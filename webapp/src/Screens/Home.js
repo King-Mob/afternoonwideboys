@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import TextsList from '../components/TextsList';
 import NewTextBox from '../components/NewTextBox';
 import ItemsBox from '../components/ItemsBox';
+import Loading from '../components/Loading';
 import {tryGetTexts} from '../api';
 
 const Home = ({user,setUser}) => {
@@ -37,7 +38,7 @@ const Home = ({user,setUser}) => {
                 </div>    
             }
             </div>
-            {texts && <TextsList texts={texts}/>}
+            {texts? <TextsList texts={texts}/>: <Loading/>}
         </div>
     )
 }

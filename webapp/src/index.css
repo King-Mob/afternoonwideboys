@@ -16,3 +16,17 @@ input {
   display: block;
   margin: 1rem;
 }
+
+.rotating-clown {
+  font-size:  6rem;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
