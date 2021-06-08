@@ -18,12 +18,9 @@ const NewTextBox = ({user,change,setChange}) => {
     };
 
     return (
-        <div style={{display: 'flex', flexDirection: 'row'}}>
+        <div className="new-text-container">
             <input value={newText} onChange={e=>setNewText(e.target.value)} placeholder="What?"></input>
-            <p style={{
-                display: 'inline', 
-                opacity: newText.length > 0? 1: 0.5
-                }}
+            <p className="new-text-button" style={{opacity: newText.length > 0? 1: 0.5}}
                 onClick={handleSend}>Send</p>
         </div>
     )

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import {tryLogin} from '../api';
+import {setCookie} from '../utils/cookies';
 
 const Login = ({user,setUser}) => {
     const [loginSuccess, setLoginSuccess] = useState(false);
@@ -12,8 +13,8 @@ const Login = ({user,setUser}) => {
         const userInfo = {email, password};
 
         const result = await tryLogin(userInfo);
-        console.log(result);
         if(result.success){
+            setCookie("user",JSON.stringify(result.data),10000);
             setUser(result.data);
             setLoginSuccess(true);
         }

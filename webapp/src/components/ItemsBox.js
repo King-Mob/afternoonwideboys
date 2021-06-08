@@ -17,11 +17,11 @@ const ItemsBox = ({userId, change}) => {
         <div>
             {items && items.length > 0 ?
             
-            items.map(item=>{
+            items.map((item,i)=>{
             if(item.Name === "afternoonwidebucks")
-                return <p>£ {item.Quantity}</p>
+                return <p key={i}>£ {item.Quantity}</p>
             else
-                return <p>{item.Quantity} {item.Name}</p>
+                return <p key={i}>{item.Quantity} {item.Name}</p>
             })
             :
             <p>No items</p>

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import {trySignUp, tryLogin} from '../api';
+import {setCookie} from '../utils/cookies';
 
 const isValidSignUp = (signUpInfo) => {
     return signUpInfo.password === signUpInfo.passwordConfirm;
@@ -24,6 +25,7 @@ const SignUp = ({user, setUser}) => {
                 const resultSignUp = await trySignUp(signUpInfo);
                 if(resultSignUp.success){
                     const resultLogin = await tryLogin(signUpInfo);
+                    setCookie("user",JSON.stringify(resultLogin.data),10000);
                     setUser(resultLogin.data);
                     setSignUpSuccess(true);
                 }

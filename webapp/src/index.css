@@ -17,6 +17,25 @@ input {
   margin: 1rem;
 }
 
+.title{
+  position: fixed;
+  width: 100%;
+  height: 4rem;
+  left: 0%;
+  margin-top: 0%;
+  background-color: #fffe5a;
+  color: #f318f3;
+}
+
+.home-container{
+  margin-top: 4rem;
+  background-color: darkslateblue;
+}
+
+.home-header{
+  background-color: slategrey;
+}
+
 .rotating-clown {
   font-size:  6rem;
   animation: rotation 2s infinite linear;
@@ -29,4 +48,40 @@ input {
   to {
     transform: rotate(359deg);
   }
+}
+
+.header-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.header-items{
+  text-align: left;
+}
+
+.header-user{
+  text-align: right;
+}
+
+.link-text{
+  cursor: pointer;
+  text-decoration: underline;
+  color: rgb(187, 85, 38);
+}
+
+a{
+  color: rgb(187, 85, 38);
+}
+
+.new-text-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.new-text-button{
+  border: solid;
+  border-radius: 0.5rem;
+  padding: 0.25rem 1rem;
 }

@@ -7,10 +7,9 @@ const TextsList = ({texts}) => {
              {texts.map(
                  (text,i) => 
                  <div key={i}>
-                    <p>{text.Value}</p>
+                    <p>{text.Value}
                     {text.Name &&
-                         <p>- <Link to={"/user/"+text.UserCreator}>{text.Name}</Link></p>
-                    }
+                        <span> 🤡 <Link to={"/user/"+text.UserCreator}>{text.Name}</Link></span>}</p>
                 </div>
                 )}
         </div>
