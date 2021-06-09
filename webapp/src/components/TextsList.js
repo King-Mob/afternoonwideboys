@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 const TextsList = ({texts}) => {
     return (
-        <div>
+        <div className="texts-container">
              {texts.map(
                  (text,i) => 
                  <div key={i}>

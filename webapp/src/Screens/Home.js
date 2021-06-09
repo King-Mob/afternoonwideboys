@@ -18,11 +18,6 @@ const Home = ({user,setUser}) => {
             setTexts(result.data);
     }
 
-    const logOut = () => {
-        setUser(null);
-        setCookie("user","null value", -1);
-    }
-
     useEffect(()=>{
         getTexts();
     },[change]);
@@ -33,6 +28,11 @@ const Home = ({user,setUser}) => {
         if(userCookie)
             setUser(JSON.parse(userCookie));
     },[]);
+
+    const logOut = () => {
+        setUser(null);
+        setCookie("user","null value", -1);
+    }
 
     return (
         <div className="home-container">

@@ -23,15 +23,14 @@ const Login = ({user,setUser}) => {
     }
 
     return (
-        <div>
+        <div className="login-container">
             {loginSuccess &&
                 <Redirect to="/"/>
             }
-            <p>Login</p>
             {user && <p>you are already logged in as {user.name}. <Link to="/">Click here</Link> to go back home</p>}
-            <input value={email} onChange={e=>setEmail(e.target.value)}></input>
+            <input placeHolder="email" value={email} onChange={e=>setEmail(e.target.value)}></input>
             <input value={password} type="password" onChange={e=>setPassword(e.target.value)}></input>
-            <p onClick={handleSubmit}>Submit</p>
+            <p className="login-button" onClick={handleSubmit}>Login</p>
             <p>{result}</p>
         </div>
     )

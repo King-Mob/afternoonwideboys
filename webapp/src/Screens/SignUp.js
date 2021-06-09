@@ -4,7 +4,12 @@ import {trySignUp, tryLogin} from '../api';
 import {setCookie} from '../utils/cookies';
 
 const isValidSignUp = (signUpInfo) => {
-    return signUpInfo.password === signUpInfo.passwordConfirm;
+    return (    
+        signUpInfo.password === signUpInfo.passwordConfirm 
+        && signUpInfo.name 
+        && signUpInfo.email 
+        && signUpInfo.token
+    );
 }
 
 const SignUp = ({user, setUser}) => {
@@ -16,10 +21,9 @@ const SignUp = ({user, setUser}) => {
     const [inviteToken, setInviteToken] = useState("");
     const [error, setError] = useState("");
 
+    const signUpInfo = {name,email,password,passwordConfirm,token: inviteToken};
 
-    const handleSubmit = async () => {
-        const signUpInfo = {name,email,password,passwordConfirm,token: inviteToken};
-
+    const handleSignUp = async () => {
         try{
             if(isValidSignUp(signUpInfo)){
                 const resultSignUp = await trySignUp(signUpInfo);
@@ -41,9 +45,8 @@ const SignUp = ({user, setUser}) => {
     }
 
     return (
-        <div>
+        <div className="login-container">
             {signUpSuccess && <Redirect to="/"/>}
-            <p>SignUp</p>
             {user && 
                 <p>You are already logged in as {user.name}, signing up will log you out.</p>
             }
@@ -52,7 +55,7 @@ const SignUp = ({user, setUser}) => {
             <input value={password} type="password" onChange={(e)=>setPassword(e.target.value)} placeholder="password"></input>
             <input value={passwordConfirm} type="password" onChange={(e)=>setPasswordConfirm(e.target.value)} placeholder="confirm password"></input>
             <input value={inviteToken} onChange={(e)=>setInviteToken(e.target.value)} placeholder="invite code"></input>
-            <p onClick={handleSubmit}>Submit</p>
+            <p className="login-button" style={{opacity: isValidSignUp(signUpInfo)?1:0.5}}onClick={handleSignUp}>Sign up</p>
             {error &&
                 <p>{error}</p>
             }

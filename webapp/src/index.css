@@ -20,7 +20,8 @@ input {
 .title{
   position: fixed;
   width: 100%;
-  height: 4rem;
+  padding: 0.5rem;
+  font-size: 2rem;
   left: 0%;
   margin-top: 0%;
   background-color: #fffe5a;
@@ -30,10 +31,18 @@ input {
 .home-container{
   margin-top: 4rem;
   background-color: darkslateblue;
+  width: 100%;
 }
 
 .home-header{
   background-color: slategrey;
+  margin-top: -1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.1rem;
+}
+
+.loading-container{
+  width: 100%;
 }
 
 .rotating-clown {
@@ -84,4 +93,21 @@ a{
   border: solid;
   border-radius: 0.5rem;
   padding: 0.25rem 1rem;
+}
+
+.login-button{
+  border: solid;
+  border-radius: 0.5rem;
+  padding: 0.25rem 1rem;
+  width: 6rem;
+}
+
+.login-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.texts-container{
+  padding: 0rem 1rem;
 }
