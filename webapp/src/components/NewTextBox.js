@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import {tryNewText} from '../api';
 import {awardAfternoonWideBucks} from '../utils';
 
-const NewTextBox = ({user,change,setChange}) => {
+const NewTextBox = ({user,refresh}) => {
     const [newText, setNewText] = useState("");
 
     const handleSend = async () => {
@@ -13,7 +13,7 @@ const NewTextBox = ({user,change,setChange}) => {
 
             setNewText("");
 
-            setChange(change+1);
+            refresh()
         }
     };
 

@@ -1,18 +1,6 @@
-import React,{useState, useEffect} from 'react';
-import {tryGetItems} from '../api';
+import React from 'react';
 
-const ItemsBox = ({userId, change}) => {
-    const [items, setItems] = useState();
-
-    const getItems = async () => {
-        const result = await tryGetItems(userId);
-        setItems(result);
-    }
-
-    useEffect(()=>{
-        getItems();
-    },[change]);
-
+const ItemsBox = ({items}) => {
     return (
         <div>
             {items && items.length > 0 ?

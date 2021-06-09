@@ -4,12 +4,14 @@ import TextsList from '../components/TextsList';
 import NewTextBox from '../components/NewTextBox';
 import ItemsBox from '../components/ItemsBox';
 import Loading from '../components/Loading';
-import {tryGetTexts} from '../api';
+import ChatModal, {ChatButton} from '../components/ChatModal';
+import {tryGetTexts, tryGetItems} from '../api';
 import {getCookie, setCookie} from '../utils/cookies';
 
 const Home = ({user,setUser}) => {
     const [texts, setTexts] = useState();
-    const [change, setChange] = useState(0);
+    const [items, setItems] = useState();
+    const [chatModalVisible, setChatModalVisible] = useState(false);
 
     const getTexts = async () => {
         const result = await tryGetTexts();
@@ -18,16 +20,25 @@ const Home = ({user,setUser}) => {
             setTexts(result.data);
     }
 
-    useEffect(()=>{
-        getTexts();
-    },[change]);
+    const getItems = async () => {
+        const result = await tryGetItems(user.id);
+
+        if(result)
+            setItems(result);
+    }
 
     useEffect(()=>{
+        getTexts()
         const userCookie = getCookie("user");
 
         if(userCookie)
             setUser(JSON.parse(userCookie));
     },[]);
+
+    useEffect(()=>{
+        if(user)
+            getItems();
+    },[user]);
 
     const logOut = () => {
         setUser(null);
@@ -40,16 +51,27 @@ const Home = ({user,setUser}) => {
             {
                 user?
                 <div>
+                    {user && 
+                    <ChatModal 
+                    visible={chatModalVisible} 
+                    closeFunction={()=>setChatModalVisible(false)}
+                    user={user}
+                    refresh={()=>{getTexts();getItems()}}
+                    />
+                    }
+                    {user &&  
+                    <ChatButton openFunction={()=>setChatModalVisible(true)}/>
+                    }
                     <div className="header-container">
                         <div className="header-items">
-                            <ItemsBox userId={user.id} change={change}/>
+                            <ItemsBox items={items}/>
                         </div>
                         <div className="header-user">
                             <p>Logged in as {user.name}.</p>
                             <p onClick={logOut} className="link-text">Log out</p>    
                         </div>
                    </div>
-                    <NewTextBox user={user} change={change} setChange={setChange}/>
+                    <NewTextBox user={user} refresh={()=>{getTexts();getItems()}}/>
                 </div>
                 :
                 <div>

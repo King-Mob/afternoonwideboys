@@ -111,3 +111,70 @@ a{
 .texts-container{
   padding: 0rem 1rem;
 }
+
+.chat-button{
+  position: fixed;
+  left: 2rem;
+  bottom: 3rem;
+  border: solid slategrey;
+  border-radius: 50%;
+  background-color: white;
+  padding: 0.3rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.chat-notification-dot{
+  top: -370%;
+  left: 40%;
+  color: red;
+  position: absolute;
+  font-size: 6rem;
+}
+
+.chat-emoji{
+  position: absolute;
+  left: 0.5rem;
+  top: -0.7rem;
+  font-size: 1.5rem;
+}
+
+.chat-container{
+  display: block;
+  position: fixed;
+  top: 20%;
+  left: 10%;
+  height: 60%;
+  width: 80%;
+  background-color: white;
+  color: black;
+  border: solid 0.1rem;
+  border-radius: 0.5rem;
+  z-index: 1;
+}
+
+.long-chat-container{
+  padding: 0rem 1rem;
+}
+
+.chat-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0rem 2rem;
+}
+
+.chat-name{
+  text-transform: uppercase;
+}
+
+.chat-option{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.chat-option-disabled{
+  text-decoration: underline;
+  cursor: pointer;
+  opacity: 0.5;
+}

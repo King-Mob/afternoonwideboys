@@ -170,9 +170,33 @@ then I could add the invite codes by psql and the site would exist
 
 
 
-actually just going to create a route called invite
+actually just going to create a route called invite.
 
 
+
+
+setCookie on successful login. on load home, try to getCookie and set user to that if there is one.
+
+
+The characters.
+
+
+awardItem, id 3, Rodney's...stained belt? it's a night time belt. for when you're alone.
+
+
+need to see if postgres can connect remotely and do an add to the itemtypes table.
+
+
+
+I can't afford -> typing in the pleading words (setCookie for that)
+
+
+Buying the toilet -> pleasure doing business with you
+award negative afternoonwidebucks
+tryCreateItem
+
+
+style the pleading, and possibly move itemState up a layer
 
 
 
