@@ -17,10 +17,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <h1>We done been hacked</h1>
-        <h1 className="rotating-clown">☠️</h1>
-        {
-          /*
            <header className="App-header">
           <Link to="/"><h1 className="title">afternoonwideboys</h1></Link>
           <Switch>
@@ -39,10 +35,7 @@ function App() {
               <Home user={user} setUser={setUser}/>
             </Route>
           </Switch>
-        </header>
-          */
-        }
-       
+        </header> 
     </div>
     </Router>
   );

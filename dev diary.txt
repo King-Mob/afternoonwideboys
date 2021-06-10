@@ -199,9 +199,17 @@ tryCreateItem
 style the pleading, and possibly move itemState up a layer
 
 
+signup
+
+sha256(password);
 
 
+login
 
+sha256(password);
+
+
+go through the passwords, and manually hash them
 
 
 

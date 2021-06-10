@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Link, Redirect} from 'react-router-dom';
+import { sha256 } from 'js-sha256';
 import {tryLogin} from '../api';
 import {setCookie} from '../utils/cookies';
 
@@ -10,7 +11,7 @@ const Login = ({user,setUser}) => {
     const [result, setResult] = useState("");
 
     const handleSubmit = async () => {
-        const userInfo = {email, password};
+        const userInfo = {email, password: sha256(password)};
 
         const result = await tryLogin(userInfo);
         if(result.success){

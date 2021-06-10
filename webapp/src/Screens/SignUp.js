@@ -21,7 +21,13 @@ const SignUp = ({user, setUser}) => {
     const [inviteToken, setInviteToken] = useState("");
     const [error, setError] = useState("");
 
-    const signUpInfo = {name,email,password,passwordConfirm,token: inviteToken};
+    const signUpInfo = {
+        name,
+        email,
+        password: sha256(password),
+        passwordConfirm: sha256(passwordConfirm),
+        token: inviteToken
+    };
 
     const handleSignUp = async () => {
         try{
