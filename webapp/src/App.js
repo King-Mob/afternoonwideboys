@@ -17,7 +17,11 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <header className="App-header">
+        <h1>We done been hacked</h1>
+        <h1 className="rotating-clown">☠️</h1>
+        {
+          /*
+           <header className="App-header">
           <Link to="/"><h1 className="title">afternoonwideboys</h1></Link>
           <Switch>
             <Route path="/user/:userId">
@@ -36,6 +40,9 @@ function App() {
             </Route>
           </Switch>
         </header>
+          */
+        }
+       
     </div>
     </Router>
   );

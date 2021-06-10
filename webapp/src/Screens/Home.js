@@ -28,7 +28,7 @@ const Home = ({user,setUser}) => {
     }
 
     useEffect(()=>{
-        getTexts()
+        getTexts();
         const userCookie = getCookie("user");
 
         if(userCookie)

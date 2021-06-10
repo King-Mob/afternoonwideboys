@@ -13,7 +13,7 @@ const NewTextBox = ({user,refresh}) => {
 
             setNewText("");
 
-            refresh()
+            refresh();
         }
     };
 
