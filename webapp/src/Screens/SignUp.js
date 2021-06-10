@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
+import { sha256 } from 'js-sha256';
 import {trySignUp, tryLogin} from '../api';
 import {setCookie} from '../utils/cookies';
 
