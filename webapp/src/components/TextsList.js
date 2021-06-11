@@ -9,7 +9,8 @@ const TextsList = ({texts}) => {
                  <div key={i}>
                     <p>{text.Value}
                     {text.Name &&
-                        <span> 🤡 <Link to={"/user/"+text.UserCreator}>{text.Name}</Link></span>}</p>
+                        <span> 🤡 <Link to={"/user/"+text.UserCreator}>{text.Name}</Link></span>}
+                    </p>
                 </div>
                 )}
         </div>

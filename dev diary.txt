@@ -188,7 +188,7 @@ need to see if postgres can connect remotely and do an add to the itemtypes tabl
 
 
 
-I can't afford -> typing in the pleading words (setCookie for that)
+I can't afford -> typing in the pleading words (setCookie for that, really this should be events in the db, right?)
 
 
 Buying the toilet -> pleasure doing business with you
@@ -209,7 +209,17 @@ login
 sha256(password);
 
 
-go through the passwords, and manually hash them
+go through the passwords, and manually hash them: done.
+
+
+/////
+
+
+
+
+
+
+
 
 
 
