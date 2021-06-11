@@ -26,6 +26,7 @@ input {
   margin-top: 0%;
   background-color: #fffe5a;
   color: #f318f3;
+  z-index: 1;
 }
 
 .home-container{

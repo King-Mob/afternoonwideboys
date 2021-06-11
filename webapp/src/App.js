@@ -18,7 +18,9 @@ function App() {
     <Router>
       <div className="App">
            <header className="App-header">
-          <Link to="/"><h1 className="title">afternoonwideboys</h1></Link>
+          <Link to="/">
+            <h1 className="title">afternoonwideboys</h1>
+          </Link>
           <Switch>
             <Route path="/user/:userId">
               <User user={user} setUser={setUser} />
