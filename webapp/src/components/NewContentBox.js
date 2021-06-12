@@ -51,7 +51,7 @@ const NewContentBox = ({user,refresh}) => {
                         value={includeVideo}
                         onChange={()=>setIncludeVideo(!includeVideo)}>    
                     </input>
-                    <label className="video-check-label">include video</label>
+                    <p className="video-check-label">include video</p>
                 </section>
                 <input 
                     value={videoUrl} 
