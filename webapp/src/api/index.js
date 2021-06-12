@@ -1,6 +1,7 @@
 import {config} from '../config';
 
-const baseUrl = process.env.PRODUCTION ? config.serverAddress.remote : config.serverAddress.local;
+//const baseUrl = process.env.PRODUCTION ? config.serverAddress.remote : config.serverAddress.local;
+const baseUrl = config.serverAddress.remote;
 
 console.log(baseUrl)
 
