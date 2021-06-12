@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: darkslateblue;
+  color: white;
 }
 
 code {
@@ -128,6 +130,7 @@ a{
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 4rem;
 }
 
 .texts-container{
@@ -199,4 +202,13 @@ a{
   text-decoration: underline;
   cursor: pointer;
   opacity: 0.5;
+}
+
+.video-container{
+  margin-top: 4rem;
+}
+
+.video-frame{
+  width: 95%;
+  height: 30vh;
 }

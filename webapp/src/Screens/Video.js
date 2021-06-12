@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
-import {tryGetVideo} from '../api';
+import {useParams, Link} from 'react-router-dom';
+import {tryGetVideo, tryGetUser} from '../api';
 
 const Video = () => {
     const {videoId} = useParams();
     const [video, setVideo] = useState();
+    const [user, setUser] = useState();
 
     console.log(video)
 
@@ -13,8 +14,18 @@ const Video = () => {
 
         console.log(result)
 
-        if(result.success)
+        if(result.success){
             setVideo(result.data);
+            getUser(result.data.UserCreator)
+        }
+    }
+
+    const getUser = async (userId) => {
+        const result = await tryGetUser(userId);
+
+        if(result.success){
+            setUser(result.data);
+        }
     }
 
     useEffect(()=>{
@@ -22,13 +33,18 @@ const Video = () => {
     },[])
 
     return (
-        <div>
+        <div className="video-container">
             {video &&
             <div>
             <h2>{video.Title}</h2>
+            {user &&
+            <p>
+                <span> 🤡 <Link to={"/user/"+video.UserCreator}>{user.Name}</Link></span>
+             </p>    
+            }
             <iframe 
-                width="560" 
-                height="315" 
+                className="video-frame"
+                width="100%"
                 src={video.Url}
                 title="YouTube video player" 
                 frameBorder="0" 

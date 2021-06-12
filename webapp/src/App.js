@@ -18,30 +18,30 @@ function App() {
   return (
     <Router>
       <div className="App">
-           <header className="App-header">
+        <header className="App-header">
           <Link to="/">
             <h1 className="title">afternoonwideboys</h1>
           </Link>
-          <Switch>
-            <Route path="/user/:userId">
+        </header> 
+        <Switch>
+          <Route path="/user/:userId">
               <User user={user} setUser={setUser} />
-            </Route>
-            <Route path="/signup">
+          </Route>
+          <Route path="/signup">
               <SignUp user={user} setUser={setUser}/>
               <p>get ready</p>
-            </Route>
-            <Route path="/login">
+          </Route>
+          <Route path="/login">
               <Login user={user} setUser={setUser}/>
               <Link to="/signup"><p>Sign up</p></Link>
-            </Route>
-            <Route path ="/video/:videoId">
+          </Route>
+          <Route path ="/video/:videoId">
               <Video user={user} />
-            </Route>
-            <Route path="/">
+          </Route>
+          <Route path="/">
               <Home user={user} setUser={setUser}/>
-            </Route>
-          </Switch>
-        </header> 
+          </Route>
+        </Switch>
     </div>
     </Router>
   );

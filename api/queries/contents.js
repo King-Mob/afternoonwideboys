@@ -29,9 +29,15 @@ const getContentsFromUser = async (userId) => {
         order: [{field: 'Created', direction: 'desc'}]
     });
 
-    const videos = await db.Videos.find({},{
+    const videos = await db.Videos.find({
+        UserCreator: userId
+    },{
         order: [{field: 'Created', direction: 'desc'}]
     });
+
+    videos.forEach(video=>
+        video.VideoId = video.Id
+    );
 
     const result = {
         success: true,

@@ -5,24 +5,14 @@ import NewContentBox from '../components/NewContentBox';
 import ItemsBox from '../components/ItemsBox';
 import Loading from '../components/Loading';
 import ChatModal, {ChatButton} from '../components/ChatModal';
-import {tryGetContents, tryGetTexts, tryGetItems} from '../api';
+import {tryGetContents, tryGetItems} from '../api';
 import {getCookie, setCookie} from '../utils/cookies';
 import {mergeContents} from '../utils/contents';
 
 const Home = ({user,setUser}) => {
-    const [texts, setTexts] = useState();
     const [contents, setContents] = useState();
     const [items, setItems] = useState();
     const [chatModalVisible, setChatModalVisible] = useState(false);
-
-    console.log(contents);
-
-    const getTexts = async () => {
-        const result = await tryGetTexts();
-
-        if(result.success)
-            setTexts(result.data);
-    }
 
     const getContents = async () => {
         const result = await tryGetContents();
@@ -39,7 +29,6 @@ const Home = ({user,setUser}) => {
     }
 
     useEffect(()=>{
-        getTexts();
         getContents();
         const userCookie = getCookie("user");
 
@@ -68,7 +57,7 @@ const Home = ({user,setUser}) => {
                     visible={chatModalVisible} 
                     closeFunction={()=>setChatModalVisible(false)}
                     user={user}
-                    refresh={()=>{getTexts();getItems()}}
+                    refresh={()=>{getContents();getItems()}}
                     />
                     }
                     {user &&  
@@ -83,11 +72,11 @@ const Home = ({user,setUser}) => {
                             <p onClick={logOut} className="link-text">Log out</p>    
                         </div>
                    </div>
-                    <NewContentBox user={user} refresh={()=>{getTexts();getItems()}}/>
+                    <NewContentBox user={user} refresh={()=>{getContents();getItems()}}/>
                 </div>
                 :
                 <div>
-                    <p><Link to="/login">login</Link> or <Link to="/signup">sign up</Link> to create texts</p>
+                    <p><Link to="/login">login</Link> or <Link to="/signup">sign up</Link> to add posts</p>
                 </div>    
             }
             </div>

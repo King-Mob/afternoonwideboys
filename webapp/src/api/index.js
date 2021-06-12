@@ -1,9 +1,8 @@
 import {config} from '../config';
 
-//const baseUrl = process.env.PRODUCTION ? config.serverAddress.remote : config.serverAddress.local;
-const baseUrl = config.serverAddress.remote;
-
-console.log(baseUrl)
+const baseUrl = process.env.NODE_ENV == "production" ? 
+    config.serverAddress.remote : 
+    config.serverAddress.local;
 
 export const trySignUp = async (signUpInfo) => {
     const signUpRequest = {

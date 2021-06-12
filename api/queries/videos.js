@@ -7,6 +7,8 @@ const getVideo = async (videoId) => {
         Id: videoId
     })
 
+    video.VideoId = video.Id;
+
     const result = {
         success: video?true:false,
         data: video
