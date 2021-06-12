@@ -10,6 +10,7 @@ import Home from './Screens/Home';
 import User from './Screens/User';
 import SignUp from './Screens/SignUp';
 import Login from './Screens/Login';
+import Video from './Screens/Video';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,6 +33,9 @@ function App() {
             <Route path="/login">
               <Login user={user} setUser={setUser}/>
               <Link to="/signup"><p>Sign up</p></Link>
+            </Route>
+            <Route path ="/video/:videoId">
+              <Video user={user} />
             </Route>
             <Route path="/">
               <Home user={user} setUser={setUser}/>

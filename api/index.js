@@ -6,6 +6,8 @@ const init = async () => {
     const {itemsRoutes} = require('./routes/items');
     const {usersRoutes} = require('./routes/users');
     const {inviteRoutes} = require('./routes/invite');
+    const {videosRoutes} = require('./routes/videos');
+    const {contentsRoutes} = require('./routes/contents');
 
     const server = Hapi.server({
         port: process.env.PORT,
@@ -17,7 +19,9 @@ const init = async () => {
         ...textsRoutes,
         ...itemsRoutes,
         ...usersRoutes,
-        ...inviteRoutes
+        ...inviteRoutes,
+        ...videosRoutes,
+        ...contentsRoutes
     ];
 
     server.route(routes);

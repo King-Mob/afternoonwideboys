@@ -46,7 +46,7 @@ const createText = async (newText,userId) => {
         Created: now.toISOString()
     });
     
-    return {result: "text successfully created"};
+    return {success: true, result: "text successfully created"};
 }
 
 module.exports = {

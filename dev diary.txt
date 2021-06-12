@@ -216,9 +216,53 @@ go through the passwords, and manually hash them: done.
 
 
 
+videos
+
+replies? comments?
+
+use items e.g. toilet or belt can be instead of the clown. video camera allows uploading videos...
 
 
 
+
+POST on videos, checks if the video is a youtube url, if it is, enter it into the database.
+
+can do more validation later, but for now, do a simple one
+
+
+
+swap getTexts for getContent later on when we have a mixed timeline.
+
+View rule for videos with creators
+
+ SELECT "Users"."Id",
+    "Users"."Name",
+    "Videos"."Title",
+    "Videos"."Url",
+    "Videos"."Created",
+    "Videos"."UserCreator",
+	"Videos"."Id" AS "VideoId"
+   FROM "Users",
+    "Videos"
+  WHERE "Users"."Id" = "Videos"."UserCreator";
+
+VideosWithCreators needs to be added, and created changed to timestamp without timezone
+
+////
+
+
+if there are both texts and videos
+
+and the last text is later than the last video
+
+
+merged contents
+
+
+
+video page
+
+need a getVideo by Id 
 
 
 

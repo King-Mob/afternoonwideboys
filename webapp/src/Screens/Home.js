@@ -1,23 +1,34 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import TextsList from '../components/TextsList';
-import NewTextBox from '../components/NewTextBox';
+import ContentsList from '../components/ContentsList';
+import NewContentBox from '../components/NewContentBox';
 import ItemsBox from '../components/ItemsBox';
 import Loading from '../components/Loading';
 import ChatModal, {ChatButton} from '../components/ChatModal';
-import {tryGetTexts, tryGetItems} from '../api';
+import {tryGetContents, tryGetTexts, tryGetItems} from '../api';
 import {getCookie, setCookie} from '../utils/cookies';
+import {mergeContents} from '../utils/contents';
 
 const Home = ({user,setUser}) => {
     const [texts, setTexts] = useState();
+    const [contents, setContents] = useState();
     const [items, setItems] = useState();
     const [chatModalVisible, setChatModalVisible] = useState(false);
+
+    console.log(contents);
 
     const getTexts = async () => {
         const result = await tryGetTexts();
 
         if(result.success)
             setTexts(result.data);
+    }
+
+    const getContents = async () => {
+        const result = await tryGetContents();
+
+        if(result.success)
+            setContents(mergeContents(result.data));
     }
 
     const getItems = async () => {
@@ -29,6 +40,7 @@ const Home = ({user,setUser}) => {
 
     useEffect(()=>{
         getTexts();
+        getContents();
         const userCookie = getCookie("user");
 
         if(userCookie)
@@ -71,7 +83,7 @@ const Home = ({user,setUser}) => {
                             <p onClick={logOut} className="link-text">Log out</p>    
                         </div>
                    </div>
-                    <NewTextBox user={user} refresh={()=>{getTexts();getItems()}}/>
+                    <NewContentBox user={user} refresh={()=>{getTexts();getItems()}}/>
                 </div>
                 :
                 <div>
@@ -79,7 +91,7 @@ const Home = ({user,setUser}) => {
                 </div>    
             }
             </div>
-            {texts? <TextsList texts={texts}/>: <Loading/>}
+            {contents? <ContentsList contents={contents}/>: <Loading/>}
         </div>
     )
 }
