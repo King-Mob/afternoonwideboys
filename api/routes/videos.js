@@ -1,7 +1,7 @@
 //get videos, create and update them
 
 const {isTokenValid} = require('../queries/auth');
-const {isVideoUrlValid} = require('../utils');
+const {tryCreateValidVideoUrl} = require('../utils');
 const {createVideo, getVideo} = require('../queries/videos');
 
 const videosRoutes = [
@@ -39,10 +39,12 @@ const videosRoutes = [
             if(tokenValid == false)
                 return {success: false, errorMessage: "invalid token to post text"};
 
-            const videoValid = await isVideoUrlValid(newVideo.videoUrl);
+            const videoEmbedLink = await tryCreateValidVideoUrl(newVideo.videoUrl);
 
-            if(videoValid == false)
-                return {success: false, errorMessage: "invalid youtube video url"}
+            if(videoEmbedLink == false)
+                return {success: false, errorMessage: "no youtube video url detected"}
+            else
+                newVideo.videoUrl = videoEmbedLink;
 
             const result = createVideo(newVideo,userId);
 
