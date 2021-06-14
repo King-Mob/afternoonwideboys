@@ -1,12 +1,12 @@
 export const mergeContents = (rawContents) => {
     let contents = [];
 
-    let texts = rawContents.texts;
-    let videos = rawContents.videos;
+    const texts = rawContents.texts;
+    const videos = rawContents.videos;
 
     let videosIndex = 0;
 
-    for(let textsIndex = 0; textsIndex<texts.length;){
+    for(let textsIndex = 0; textsIndex < texts.length;){
         let text = texts[textsIndex];
         let video = videos[videosIndex];
 
@@ -26,8 +26,11 @@ export const mergeContents = (rawContents) => {
         }
     };
 
-    if(videosIndex < videos.length - 1)
-        contents.concat(videos.slice(videosIndex));
+    if(videosIndex < videos.length){
+        const remainingVideos = videos.slice(videosIndex).map(video=>{
+            return {type: 'video', content: video}});
+        contents.concat(remainingVideos);
+    };
 
     return contents;
 }

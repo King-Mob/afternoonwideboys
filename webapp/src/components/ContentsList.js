@@ -20,8 +20,6 @@ const Video = ({video}) =>
     </div>
 
 const ContentsList = ({contents}) => {
-    console.log(contents)
-
     return (
         <div className="texts-container">
             {contents.map(

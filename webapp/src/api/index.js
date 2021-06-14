@@ -1,6 +1,6 @@
 import {config} from '../config';
 
-const baseUrl = process.env.NODE_ENV == "production" ? 
+const baseUrl = process.env.NODE_ENV === "production" ? 
     config.serverAddress.remote : 
     config.serverAddress.local;
 
@@ -50,6 +50,11 @@ export const tryGetVideo = async (videoId) => {
     return result.json();
 }
 
+export const tryGetComments = async (videoId) => {
+    const result = await fetch(`${baseUrl}/comments/${videoId}`);
+    return result.json();
+}
+
 export const tryNewText = async (user,newText) => {
     const newTextRequest = {
         method: 'POST',
@@ -92,6 +97,30 @@ export const tryNewVideo = async (user,title,videoUrl) => {
     };
 
     const result = await fetch(`${baseUrl}/videos`,newVideoRequest);
+    return result.json();
+}
+
+export const tryNewComment = async (user,newComment) => {
+    const newCommentRequest = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            },
+        body: JSON.stringify({
+            newComment:{
+                value: newComment.value,
+                videoId: newComment.videoId,
+                timelinePosition: newComment.timelinePosition
+            },
+            userId: user.id,
+            token: {
+                type: 5,
+                value: user.token
+            }
+        })
+    };
+
+    const result = await fetch(`${baseUrl}/comments`,newCommentRequest);
     return result.json();
 }
 

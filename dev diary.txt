@@ -264,6 +264,36 @@ video page
 
 need a getVideo by Id 
 
+///
+
+
+to get the player state is going to require some messing with the player api code.
+
+
+the hard part might be applying my style, or that might be fine.
+
+
+I think it's the DOM manipulation inside a react function that is going to be uncomfortable.
+
+
+
+onYouTubeIframeAPIReady probably needs to be globally accessible, because the youtubeIframe script tag needs to be able to call it.
+
+
+style comments
+
+create new comments -> 
+
+
+sometimes the player never sends "onplayerready". 
+
+1) either that should never happen or
+2) when that happens, refresh the page.
+
+hmm. this might be the halting problem. oh well.
+
+
+
 
 
 

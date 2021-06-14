@@ -6,7 +6,7 @@ import ItemsBox from '../components/ItemsBox';
 import Loading from '../components/Loading';
 import ChatModal, {ChatButton} from '../components/ChatModal';
 import {tryGetContents, tryGetItems} from '../api';
-import {getCookie, setCookie} from '../utils/cookies';
+import {setCookie} from '../utils/cookies';
 import {mergeContents} from '../utils/contents';
 
 const Home = ({user,setUser}) => {
@@ -30,10 +30,6 @@ const Home = ({user,setUser}) => {
 
     useEffect(()=>{
         getContents();
-        const userCookie = getCookie("user");
-
-        if(userCookie)
-            setUser(JSON.parse(userCookie));
     },[]);
 
     useEffect(()=>{

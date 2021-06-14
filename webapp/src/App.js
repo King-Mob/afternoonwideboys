@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   HashRouter as Router,
   Switch,
@@ -11,9 +11,17 @@ import User from './Screens/User';
 import SignUp from './Screens/SignUp';
 import Login from './Screens/Login';
 import Video from './Screens/Video';
+import {getCookie} from './utils/cookies';
 
 function App() {
   const [user, setUser] = useState(null);
+
+  useEffect(()=>{
+    const userCookie = getCookie("user");
+
+    if(userCookie)
+        setUser(JSON.parse(userCookie));
+  },[]);
 
   return (
     <Router>
