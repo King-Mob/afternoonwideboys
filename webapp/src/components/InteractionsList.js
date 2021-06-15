@@ -9,7 +9,7 @@ const Comment = ({comment}) =>
     </div>;
 
 const InteractionsList = ({interactions, time}) => {
-    const comments = interactions.filter(comment => comment.TimelinePosition < time);
+    const comments = interactions.filter(comment => comment.TimelinePosition <= time);
 
     return (
         <div className="interactions-container">

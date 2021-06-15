@@ -45,12 +45,18 @@ input {
 }
 
 .loading-container{
+  margin-top: 30%;
   width: 100%;
+}
+
+.loading-text{
+  font-size: 2rem;
 }
 
 .rotating-clown {
   font-size:  6rem;
   animation: rotation 2s infinite linear;
+  margin: 0rem;
 }
 
 @keyframes rotation {

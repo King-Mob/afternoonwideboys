@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useParams, Link} from 'react-router-dom';
 import {tryGetVideo, tryGetUser, tryGetComments} from '../api';
+import Loading from '../components/Loading';
 import InteractionsList from '../components/InteractionsList';
 import NewInteractionBox from '../components/NewInteractionBox';
 
@@ -82,7 +83,7 @@ const Video = ({user}) => {
 
     return (
         <div>
-            {video && <div className="video-container">
+            {video? <div className="video-container">
                 <iframe 
                     className="video-frame"
                     width="100%"
@@ -99,7 +100,10 @@ const Video = ({user}) => {
                     <span> 🤡 <Link to={"/user/"+video.UserCreator}>{userCreator.Name}</Link></span>
                 </p>    
                 }
-            </div>}
+            </div>
+            :
+            <Loading/>
+            }
             {comments && 
                 <InteractionsList interactions={comments} time={currentVideoTime} />
             }
