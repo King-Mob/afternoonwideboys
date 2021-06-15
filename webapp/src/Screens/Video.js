@@ -63,8 +63,12 @@ const Video = ({user}) => {
     useEffect(()=>{
         getVideo();
         getComments();
-        setUpYoutubeAPI();
     },[])
+
+    useEffect(()=>{
+        if(video)
+            setUpYoutubeAPI();
+    },[video]);
 
     useEffect(()=>{
         if(player){
