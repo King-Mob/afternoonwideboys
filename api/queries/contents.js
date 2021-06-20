@@ -1,5 +1,5 @@
 const {_db} = require('./query');
-const {mergeContents} = require('../utils');
+const {mergeContents, mergeContentsNoReplies} = require('../utils');
 
 const getAllContents = async () => {
     const db = await _db;
@@ -50,7 +50,7 @@ const getContentsFromUser = async (userId) => {
         video.VideoId = video.Id
     );
 
-    const contents = mergeContents({
+    const contents = mergeContentsNoReplies({
         texts,
         videos
     });
