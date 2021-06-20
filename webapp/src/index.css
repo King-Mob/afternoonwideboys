@@ -308,6 +308,7 @@ a{
 .user-items-container{
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: 1rem;
 }
 
 .user-items-container p{

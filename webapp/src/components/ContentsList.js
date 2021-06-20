@@ -7,7 +7,7 @@ const Text = ({text,setReplyToId,setReplyToType,setReplyToItem}) =>
             {text.Value}
             {text.Name &&
             <span> 🤡 <Link to={"/user/"+text.UserCreator}>{text.Name}</Link></span>}
-            {!text.HasReply && 
+            {(!text.HasReply && text.Name) &&
                 <span> ▪️ <span 
                         onClick={()=>{
                             setReplyToType(1);
@@ -27,7 +27,7 @@ const Video = ({video,setReplyToId,setReplyToType,setReplyToItem}) =>
             🎥<Link to={"/video/"+video.VideoId}>{video.Title}</Link>🎥
             {video.Name &&
             <span> 🤡 <Link to={"/user/"+video.UserCreator}>{video.Name}</Link></span>}
-             {!video.HasReply && 
+             {(!video.HasReply && video.Name) && 
                 <span> ▪️ <span 
                         onClick={()=>{
                             setReplyToType(2);

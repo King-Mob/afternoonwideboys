@@ -7,6 +7,7 @@ import {tryGetUser, tryGetUserContents, tryGetItems} from '../api';
 const User = () => {
     const {userId} = useParams();
     const [userTitle, setUserTitle] = useState();
+    const [userFaction, setUserFaction] = useState();
     const [contents, setContents] = useState();
     const [items, setItems] = useState();
 
@@ -39,10 +40,10 @@ const User = () => {
                 <div className="user-container">
                     <div className="user-name-container">
                         <h2>{userTitle}</h2>
-                        <div className="faction-badge">
+                        {userFaction && <div className="faction-badge">
                             <p className="faction-badge-flag">🏁</p>
                             <p className="faction-badge-toilet">🚽</p>
-                        </div>
+                        </div>}
                     </div>
                     <div className="user-items-container">
                         <p>{userTitle}'s items:</p>
