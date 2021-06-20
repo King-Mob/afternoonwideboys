@@ -77,6 +77,30 @@ export const tryNewText = async (user,newText) => {
     return result.json();
 }
 
+export const tryNewTextAsReply = async (user,newText,toId,toType) => {
+    const newTextRequest = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            },
+        body: JSON.stringify({
+            newText:{
+                value: newText,
+                toId,
+                toType
+            },
+            userId: user.id,
+            token: {
+                type: 5,
+                value: user.token
+            }
+        })
+    };
+
+    const result = await fetch(`${baseUrl}/textsasreply`,newTextRequest);
+    return result.json();
+}
+
 export const tryNewVideo = async (user,title,videoUrl) => {
     const newVideoRequest = {
         method: 'POST',
@@ -97,6 +121,31 @@ export const tryNewVideo = async (user,title,videoUrl) => {
     };
 
     const result = await fetch(`${baseUrl}/videos`,newVideoRequest);
+    return result.json();
+}
+
+export const tryNewVideoAsReply = async (user,title,videoUrl,toId,toType) => {
+    const newVideoRequest = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            },
+        body: JSON.stringify({
+            newVideo:{
+                title,
+                videoUrl,
+                toId,
+                toType
+            },
+            userId: user.id,
+            token: {
+                type: 5,
+                value: user.token
+            }
+        })
+    };
+
+    const result = await fetch(`${baseUrl}/videosasreply`,newVideoRequest);
     return result.json();
 }
 

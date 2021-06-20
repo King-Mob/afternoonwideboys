@@ -1,4 +1,5 @@
 const {_db} = require('./query');
+const {mergeContents} = require('../utils');
 
 const getAllContents = async () => {
     const db = await _db;
@@ -11,9 +12,19 @@ const getAllContents = async () => {
         order: [{field: 'Created', direction: 'desc'}]
     });
 
+    const replies = await db.Replies.find({},{
+        order: [{field: 'Id', direction: 'desc'}]
+    });
+
+    const contents = mergeContents({
+        texts,
+        videos,
+        replies
+    });
+
     const result = {
         success: true,
-        data: {texts,videos}
+        data: contents
     };
 
     return result;
@@ -39,9 +50,14 @@ const getContentsFromUser = async (userId) => {
         video.VideoId = video.Id
     );
 
+    const contents = mergeContents({
+        texts,
+        videos
+    });
+
     const result = {
         success: true,
-        data: {texts,videos}
+        data: contents
     };
 
     return result;

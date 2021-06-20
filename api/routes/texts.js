@@ -1,7 +1,7 @@
 //get texts, create and update them
 
 const {isTokenValid} = require('../queries/auth');
-const {getAllTexts, getTextsFromUser, createText} = require('../queries/texts');
+const {getAllTexts, getTextsFromUser, createText, createTextAsReply} = require('../queries/texts');
 
 const textsRoutes = [
     {
@@ -44,10 +44,7 @@ const textsRoutes = [
             }
         },
         handler: async(request)=> {
-            const newText = request.payload.newText;
-            const userId = request.payload.userId;
-
-            const token = request.payload.token;
+            const {newText, userId, token} = request.payload;
 
             const tokenValid = await isTokenValid(token);
 
@@ -55,6 +52,28 @@ const textsRoutes = [
                 return {result: "error", errorMessage: "invalid token to post text"}
 
             const result = createText(newText,userId);
+
+            return result;
+        }
+    },
+    {
+        method: 'POST',
+        path: '/textsasreply',
+        config: {
+            cors: {
+                origin: ['*'],
+                additionalHeaders: ['cache-control', 'x-requested-with']
+            }
+        },
+        handler: async(request)=> {
+            const {newText, userId, token} = request.payload;
+
+            const tokenValid = await isTokenValid(token);
+
+            if(tokenValid == false)
+                return {result: "error", errorMessage: "invalid token to post text"}
+
+            const result = createTextAsReply(newText,userId);
 
             return result;
         }

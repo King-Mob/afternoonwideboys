@@ -7,18 +7,20 @@ import Loading from '../components/Loading';
 import ChatModal, {ChatButton} from '../components/ChatModal';
 import {tryGetContents, tryGetItems} from '../api';
 import {setCookie} from '../utils/cookies';
-import {mergeContents} from '../utils/contents';
 
 const Home = ({user,setUser}) => {
     const [contents, setContents] = useState();
     const [items, setItems] = useState();
     const [chatModalVisible, setChatModalVisible] = useState(false);
+    const [replyToType, setReplyToType] = useState(0);
+    const [replyToId, setReplyToId] = useState(0);
+    const [replyToItem, setReplyToItem] = useState();
 
     const getContents = async () => {
         const result = await tryGetContents();
 
         if(result.success)
-            setContents(mergeContents(result.data));
+            setContents(result.data);
     }
 
     const getItems = async () => {
@@ -68,7 +70,14 @@ const Home = ({user,setUser}) => {
                             <p onClick={logOut} className="link-text">Log out</p>    
                         </div>
                    </div>
-                    <NewContentBox user={user} refresh={()=>{getContents();getItems()}}/>
+                    <NewContentBox 
+                        user={user} 
+                        refresh={()=>{getContents();getItems()}}
+                        replyToType={replyToType}
+                        replyToId={replyToId}
+                        replyToItem={replyToItem}
+                        resetReply={()=>{setReplyToId(0);setReplyToType(0)}}
+                    />
                 </div>
                 :
                 <div>
@@ -76,7 +85,16 @@ const Home = ({user,setUser}) => {
                 </div>    
             }
             </div>
-            {contents? <ContentsList contents={contents}/>: <Loading/>}
+            {contents? 
+                <ContentsList 
+                    contents={contents}
+                    setReplyToId={setReplyToId}
+                    setReplyToType={setReplyToType}
+                    setReplyToItem={setReplyToItem}
+                />
+            : 
+                <Loading/>
+            }
         </div>
     )
 }

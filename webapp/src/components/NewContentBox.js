@@ -1,8 +1,27 @@
 import React,{useState} from 'react';
-import {tryNewText, tryNewVideo} from '../api';
+import {Link} from 'react-router-dom'
+import {tryNewText, tryNewTextAsReply, tryNewVideo, tryNewVideoAsReply} from '../api';
 import {awardAfternoonWideBucks} from '../utils';
 
-const NewContentBox = ({user,refresh}) => {
+const Text = ({text}) => 
+    <div className="texts-container">
+        <p className="content-item">
+            {text.Value}
+            {text.Name &&
+            <span> 🤡 <Link to={"/user/"+text.UserCreator}>{text.Name}</Link></span>}
+        </p>
+    </div>
+
+const Video = ({video}) => 
+    <div className="texts-container">
+        <p className="content-item">
+            🎥<Link to={"/video/"+video.VideoId}>{video.Title}</Link>🎥
+            {video.Name &&
+            <span> 🤡 <Link to={"/user/"+video.UserCreator}>{video.Name}</Link></span>}
+        </p>
+    </div>
+
+const NewContentBox = ({user,refresh,replyToType,replyToId,replyToItem,resetReply}) => {
     const [newText, setNewText] = useState("");
     const [includeVideo, setIncludeVideo] = useState(false);
     const [videoUrl, setVideoUrl] = useState("");
@@ -10,7 +29,14 @@ const NewContentBox = ({user,refresh}) => {
 
     const sendText = async () => {
         if(newText.length > 0){
-            await tryNewText(user,newText);
+            if(replyToId){
+                await tryNewTextAsReply(user,newText,replyToId,replyToType);
+                resetReply();
+            }
+            else{
+                await tryNewText(user,newText);
+            }
+            
             await awardAfternoonWideBucks(user.id,10,user.token);
 
             setNewText("");
@@ -20,7 +46,15 @@ const NewContentBox = ({user,refresh}) => {
 
     const sendVideo = async () => {
         if(newText.length > 0){
-            const result = await tryNewVideo(user,newText,videoUrl);
+            let result;
+
+            if(replyToId){
+                result = await tryNewVideoAsReply(user,newText,videoUrl,replyToId,replyToType);
+                resetReply();
+            }
+            else{
+                result = await tryNewVideo(user,newText,videoUrl);
+            }
 
             if(result.success){
                 await awardAfternoonWideBucks(user.id,50,user.token);
@@ -62,6 +96,17 @@ const NewContentBox = ({user,refresh}) => {
                 >
                 </input>
             </div>
+            {replyToId!=0 && <div>
+                <div className="as-reply-to-container">
+                    <p className="as-reply-to-item">as reply to:</p>
+                    <p className="as-reply-to-item" onClick={resetReply}>❌</p>
+                </div>
+            {replyToItem && (replyToItem.TextId? 
+                    <Text text={replyToItem}/>
+                :
+                    <Video video={replyToItem}/>
+            )}
+            </div>}
             {error && <p className="error-text">{error}</p>}    
         </div>
     )

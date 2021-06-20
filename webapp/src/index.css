@@ -42,6 +42,7 @@ input {
   margin-top: -1.5rem;
   padding-top: 0.5rem;
   padding-bottom: 0.1rem;
+  margin-bottom: 1rem;
 }
 
 .loading-container{
@@ -121,6 +122,16 @@ a{
   font-size: 1rem;
 }
 
+.as-reply-to-container{
+  display: flex;
+  justify-content: space-between;
+  margin: 0rem 2rem;
+}
+
+.as-reply-to-item{
+  margin-top: 0rem;
+}
+
 .error-text{
   color: red;
 }
@@ -141,6 +152,25 @@ a{
 
 .texts-container{
   padding: 0rem 1rem;
+}
+
+.content-item{
+  margin-top: 0rem;
+}
+
+.content-item-reply{
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+.reply-bar{
+  margin: 0rem;
+}
+
+.reply-button{
+  cursor: pointer;
+  text-decoration: underline;
+  color:rgb(187, 85, 38);
 }
 
 .chat-button{
@@ -256,3 +286,49 @@ a{
   bottom: 0rem;
   background-color: slategrey;
 }
+
+.red-overlay{
+  background-color: rgba(255,0,0,0.5);
+  width: 7%;
+  height: 2rem;
+  position: absolute;
+  left: 47%;
+}
+
+.user-container{
+  margin-top: 4rem;
+}
+
+.user-name-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.user-items-container{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.user-items-container p{
+  margin: 0rem;
+}
+
+.faction-badge{
+  margin-top: 1rem;
+  margin-left: 1rem;
+  background-color: white;
+  width: 2rem;
+  height: 2.5rem;
+  border: black solid;
+  border-radius: 0.5rem;
+}
+
+.faction-badge-flag{
+  margin: 0rem;
+}
+
+.faction-badge-toilet{
+  margin-top: -0.5rem;
+}
+

@@ -41,10 +41,33 @@ const createVideo = async (newVideo,userId) => {
         Created: now.toISOString()
     });
     
-    return {success: true, result: "Video successfully created"};
+    return {success: true, result: "Video successfully created",newVideoId};
+}
+
+const createVideoAsReply = async (newVideo,userId) => {
+    const db = await _db;
+
+    const {newVideoId} = await createVideo(newVideo, userId);
+
+    const lastReply = await db.Replies.findOne({}, {
+        order: [{field: 'Id', direction: 'desc'}]
+    });
+
+    const newReplyId = parseInt(lastReply.Id) + 1;
+
+    await db.Replies.insert({
+        Id: newReplyId,
+        FromType: 1,
+        FromId:  parseInt(newVideoId),
+        ToType:  parseInt(newVideo.toType),
+        ToId:  parseInt(newVideo.toId)
+    });
+
+    return {success: true, result: "video with reply created"};
 }
 
 module.exports = {
     createVideo,
-    getVideo
+    getVideo,
+    createVideoAsReply
 }

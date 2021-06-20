@@ -3,7 +3,6 @@ import {useParams} from 'react-router-dom';
 import ContentsList from '../components/ContentsList';
 import ItemsBox from '../components/ItemsBox';
 import {tryGetUser, tryGetUserContents, tryGetItems} from '../api';
-import {mergeContents} from '../utils/contents';
 
 const User = () => {
     const {userId} = useParams();
@@ -18,7 +17,7 @@ const User = () => {
             setUserTitle(resultUser.data.Name);
 
             const resultContents = await tryGetUserContents(userId);
-            setContents(mergeContents(resultContents.data));
+            setContents(resultContents.data);
         }
     }
 
@@ -37,10 +36,18 @@ const User = () => {
     return (
         <div>
             {userTitle?
-                <div>
-                    <h2>{userTitle}</h2>
-                    <p>{userTitle}'s items:</p>
-                    <ItemsBox items={items}/>
+                <div className="user-container">
+                    <div className="user-name-container">
+                        <h2>{userTitle}</h2>
+                        <div className="faction-badge">
+                            <p className="faction-badge-flag">🏁</p>
+                            <p className="faction-badge-toilet">🚽</p>
+                        </div>
+                    </div>
+                    <div className="user-items-container">
+                        <p>{userTitle}'s items:</p>
+                        <ItemsBox items={items}/>
+                    </div>
                 </div>
             :
                 <h2>no user found</h2>

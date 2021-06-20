@@ -46,11 +46,34 @@ const createText = async (newText,userId) => {
         Created: now.toISOString()
     });
     
-    return {success: true, result: "text successfully created"};
+    return {success: true, result: "text successfully created", newTextId};
+}
+
+const createTextAsReply = async (newText, userId) => {
+    const db = await _db;
+
+    const {newTextId} = await createText(newText, userId);
+
+    const lastReply = await db.Replies.findOne({}, {
+        order: [{field: 'Id', direction: 'desc'}]
+    });
+
+    const newReplyId = parseInt(lastReply.Id) + 1;
+
+    await db.Replies.insert({
+        Id: newReplyId,
+        FromType: 1,
+        FromId:  parseInt(newTextId),
+        ToType:  parseInt(newText.toType),
+        ToId:  parseInt(newText.toId)
+    });
+
+    return {success: true, result: "text with reply created"};
 }
 
 module.exports = {
     getAllTexts,
     getTextsFromUser,
-    createText
+    createText,
+    createTextAsReply
 }

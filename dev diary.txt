@@ -293,6 +293,76 @@ sometimes the player never sends "onplayerready".
 hmm. this might be the halting problem. oh well.
 
 
+////
+
+
+Replies.
+
+Easiest to represent as a new type of content, related to texts.
+
+Choice between single replies, or long threads.
+
+long threads are more fun, just makes retrieval and compilation more difficult.
+
+had an idea that texts can appear multiple times, but they can only link to an earlier text once.
+
+could also do pagination, or only retrieve 1000 contents in one go, that would limit the computational complexity of the api call.
+
+
+if replies are just links between contents, is that cleaner than replies actually containing content?
+
+so replies do have to keep track of the types they link between, because the IDs aren't unique across different content type tables.
+
+
+I'm just thinking about how I'd like to receive replies in the front-end. 
+
+Given that all the front-end needs is to render a list, and some of them need lines between them, probably the logic around merging and ordering the streams should be done in the back-end before the stuff is actually returned.
+
+
+just add "hasReply: true" to the content and then it'll render a little linky thing.
+
+Replies
+
+Id
+ToType
+ToId
+FromType
+FromId
+
+ContentTypes
+
+Id
+Name
+Description
+
+
+
+Step 1: move the mergeContent to the back-end. done.
+
+Step 2: make db changes. done.
+
+Step 3: adapt merging algorithm to incorporate easy version of replies
+
+
+
+Step 4: need to do create reply with whatever the textId that's been created is. or could just pass along isReply, with replyId and type. yeah going to do that.
+
+
+could possibly simplify the text and video component with the reply button, and such.
+
+
+replyToItem might be easier than replyToId...
+
+refactor to make simpler tomorrow, if I want. for now, let's get it to work.
+
+
+display item being replied to
+add api calls
+
+
+
+
+
 
 
 
