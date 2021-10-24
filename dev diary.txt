@@ -359,10 +359,61 @@ refactor to make simpler tomorrow, if I want. for now, let's get it to work.
 display item being replied to
 add api calls
 
+/////
+
+add invitecode screen so i'm not using postman
+
+
+
+////
+
+
+
+Wall
+
+
+position (as percentage of screen)
+rotation
+size
+colour
+text
+age (for opacity)
+
+add colours and sizes
+
+
+
+look at multi-touch
+
+
+
+convert to vw vh, for everyone nerves
+
+
+there's something about not letting it off the edge of the screen. something that i'm not getting
+
+
+also, need to set the size on mobile
+
+
+
+multi-touch, rotation and vertical pinch/stretch, and just general being better
 
 
 
 
+have rotation on the detect when sending, just don't have a way to edit it yet. so it goes in the database
+
+
+
+mystery of the layout of the previous stickers...
+
+
+if we have padding on the draggable, need padding on the stickers
+
+
+
+make text-input invisible, add a p on top that matches it
 
 
 

@@ -134,6 +134,41 @@ const ChatModal = ({visible, closeFunction, user, refresh}) => {
         </div>
     }
 
+    /*
+    eventually move the chat data into this
+
+    const chatData = {
+        characterName: "Prof Character",
+        stages: {
+            firstStage: {
+                characterSays: "welcome to the first stage!",
+                userOptions: [
+                    {
+                        speech: "great to be here!",
+                        action: ()=>{setChatStage("secondStage")},
+                    },
+                ],
+            },
+        },
+    };
+
+    let chat = <div>
+        <p>{chatData.stages[chatStage].characterSays}</p>
+        {chatData.stages[chatStage].userOptions.map(option => {
+          if(option.disabled){
+            return <p className="chat-option disabled">
+                {option.speech}
+              </p>
+          }
+          return <p className="chat-option" onClick={option.action}>
+                {option.speech}
+            </p>
+          })
+        }
+    </div>
+    
+    */
+
     return <div className="chat-container" style={{display: visible?'block':'none'}}>
         <div className="chat-header">
             <p className="chat-name">Rodney Berkshire</p>

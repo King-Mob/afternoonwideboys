@@ -11,6 +11,7 @@ import User from './Screens/User';
 import SignUp from './Screens/SignUp';
 import Login from './Screens/Login';
 import Video from './Screens/Video';
+import Wall from './Screens/Wall';
 import {getCookie} from './utils/cookies';
 
 function App() {
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route path ="/video/:videoId">
               <Video user={user} />
+          </Route>
+          <Route path ="/wall">
+              <Wall user={user} />
           </Route>
           <Route path="/">
               <Home user={user} setUser={setUser}/>

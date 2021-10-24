@@ -225,3 +225,28 @@ export const tryCreateItem = async (token,newItem) => {
     const result = await fetch(`${baseUrl}/items`,itemRequest);
     return result.json();
 }
+
+export const tryGetStickers = async () => {
+    const result = await fetch(`${baseUrl}/stickers`);
+    return result.json();
+}
+
+export const tryNewSticker = async (user, newSticker) => {
+    const newStickerRequest = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            },
+        body: JSON.stringify({
+            newSticker,
+            userId: user.id,
+            token: {
+                type: 5,
+                value: user.token
+            }
+        })
+    };
+
+    const result = await fetch(`${baseUrl}/stickers`,newStickerRequest);
+    return result.json();
+}

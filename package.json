@@ -19,6 +19,7 @@
     "dependencies": {
       "@hapi/hapi": "^20.1.3",
       "dotenv": "^10.0.0",
+      "luxon": "^2.0.2",
       "massive": "^6.9.0",
       "pg": "^8.6.0"
     }
