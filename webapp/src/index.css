@@ -339,7 +339,7 @@ a{
 }
 
 .draggable{
-  position: absolute;
+  position: relative;
   margin: 0rem;
   padding: 0rem;
   width: auto;
@@ -374,11 +374,8 @@ a{
   width: 100%;
 }
 
-.circle-button{
-  border: solid 1px;
-  border-radius: 50%;
-  width: 1.5rem;
-  height: 1.5rem;
+.sticker{
+  position: absolute;
 }
 
 .new-sticker-button{

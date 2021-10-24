@@ -417,7 +417,9 @@ make text-input invisible, add a p on top that matches it
 
 
 
+if stickers and newSticker are position: absolute, then newSticker can be clicked on, but page expands
 
+if newSticker doesn't have position:absolute, then it can get stuck under one of the elements that's above it in the list. annoyingly z-index isn't working.
 
 
 

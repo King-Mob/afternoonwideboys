@@ -153,6 +153,7 @@ const Wall = ({user}) => {
         <div className="wall-container">
             {stickers.map(sticker => 
                 <p
+                    className="sticker"
                     style={{
                         zIndex: 0,
                         position: 'absolute',
@@ -164,16 +165,15 @@ const Wall = ({user}) => {
                     }}
                 >
                     {sticker.Text}
-                </p>
-
-                )
-            }
+                </p>)
+            }  
             <div
                 draggable={true}
                 onDragStart={dragHandler}
                 className="draggable"
                 id="dragging"
             >
+                {/*<p>{newText}</p>*/}
                 <input
                     value={newText}
                     type="text" 
