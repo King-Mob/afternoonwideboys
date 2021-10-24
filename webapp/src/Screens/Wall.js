@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
 import {tryGetStickers, tryNewSticker} from '../api';
 
 function multiTouchElement(elmnt){
@@ -134,6 +135,9 @@ const Wall = ({user}) => {
 
     return (<>
         <div className="wall-toolbar">
+            {
+            user?
+            <>
             <div className="colours">
                 <p onClick={()=>setColour("white")} style={{color: "white"}}>white</p>
                 <p onClick={()=>setColour("red")} style={{color: "red"}}>red</p>
@@ -146,6 +150,13 @@ const Wall = ({user}) => {
             >
                 add sticker
             </p>
+            </>
+            :
+            <>
+                <p><Link to="/login">login</Link> or <Link to="/signup">sign up</Link> to add stickers</p>
+            </>
+            }   
+            
         </div>
         <div className="wall-container">
             {stickers.map(sticker => 
