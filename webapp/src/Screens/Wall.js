@@ -169,7 +169,14 @@ const Wall = ({user}) => {
                 className="draggable"
                 id="dragging"
             >
-                {/*<p>{newText}</p>*/}
+                {/*
+                    I was looking at this because the stickers render
+                    multiline as they go near the edge. and that would be
+                    nice?
+                    <p
+                    style={{textAlign: 'left'}}
+                    >{newText}</p>
+                */}
                 <input
                     value={newText}
                     type="text" 
