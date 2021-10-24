@@ -68,7 +68,7 @@ const Home = ({user,setUser}) => {
                         <div className="header-user">
                             <p>Logged in as {user.name}.</p>
                             <p onClick={logOut} className="link-text">Log out</p>
-                            <p>set <Link to="/wall">the wall</Link></p>    
+                            <p>View <Link to="/wall">the wall</Link></p>    
                         </div>
                    </div>
                     <NewContentBox 

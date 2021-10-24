@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {tryGetStickers, tryNewSticker} from '../api';
+import Loading from '../components/Loading';
 
 function multiTouchElement(elmnt){
     let distanceInsideX;
@@ -159,6 +160,9 @@ const Wall = ({user}) => {
             
         </div>
         <div className="wall-container">
+            {
+                stickers.length<1 && <Loading/>
+            }
             {stickers.map(sticker => 
                 <p
                     className="sticker"
