@@ -125,11 +125,8 @@ const Wall = ({user}) => {
         getStickers();
         dragElement(document.getElementById("dragging"));
         multiTouchElement(document.getElementById("dragging"));
+        document.getElementById("sticker-input").focus();
     },[loading])
-
-    const dragHandler = () => {
-        console.log("we're dragging")
-    }
 
     const enterText = (e) => {
         e.target.focus();
@@ -169,7 +166,6 @@ const Wall = ({user}) => {
             }  
             <div
                 draggable={true}
-                onDragStart={dragHandler}
                 className="draggable"
                 id="dragging"
             >
@@ -179,6 +175,7 @@ const Wall = ({user}) => {
                     type="text" 
                     onChange={e=>setNewText(e.target.value)}
                     className="wall-input"
+                    id="sticker-input"
                     onClick={enterText}
                     size={newText.length}
                     placeholder="Aa"
