@@ -424,3 +424,32 @@ if newSticker doesn't have position:absolute, then it can get stuck under one of
 
 
 
+
+send all email notifications
+
+-> for all users, check if they have notifications turned on,
+check if there are stickers older than 24 hours that were posted after their last login -> send email about the stickers
+
+do this check once per day.
+
+
+turn off email notifications
+
+
+
+
+
+put lots of images of banks there, and then when a picture is uploaded, replace them all with that picture
+
+
+
+
+on the send and give and share buttons, don't refresh, flash THANKS in big letters
+
+
+
+
+
+
+
+

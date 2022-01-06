@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -10,7 +10,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -19,7 +19,7 @@ input {
   margin: 1rem;
 }
 
-.title{
+.title {
   position: fixed;
   width: 100%;
   padding: 0.5rem;
@@ -31,31 +31,33 @@ input {
   z-index: 1;
 }
 
-.home-container{
+.home-container {
   margin-top: 4rem;
   background-color: darkslateblue;
   width: 100%;
 }
 
-.home-header{
+.home-header {
   background-color: slategrey;
   margin-top: -1.5rem;
   padding-top: 0.5rem;
   padding-bottom: 0.1rem;
   margin-bottom: 1rem;
+  width: 100%;
+  overflow: hidden;
 }
 
-.loading-container{
+.loading-container {
   margin-top: 30%;
   width: 100%;
 }
 
-.loading-text{
+.loading-text {
   font-size: 2rem;
 }
 
 .rotating-clown {
-  font-size:  6rem;
+  font-size: 6rem;
   animation: rotation 2s infinite linear;
   margin: 0rem;
 }
@@ -69,111 +71,140 @@ input {
   }
 }
 
-.header-container{
+.header-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.header-items{
+.header-items {
   text-align: left;
 }
 
-.header-user{
+.header-user {
   text-align: right;
 }
 
-.link-text{
+.link-text {
   cursor: pointer;
   text-decoration: underline;
   color: rgb(187, 85, 38);
 }
 
-a{
+a {
   color: rgb(187, 85, 38);
 }
 
-.new-text-container{
+.new-text-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.new-text-button{
+.new-text-button {
   border: solid;
   border-radius: 0.5rem;
   padding: 0.25rem 1rem;
 }
 
-.new-video-container{
+.reward {
+  margin-top: 0;
+  margin-bottom: -2rem;
+  height: 1rem;
+  width: 50%;
+  margin-left: 65%;
+  opacity: 0;
+}
+
+.reward-animation {
+  animation: reward-keyframes 1s linear;
+}
+
+@keyframes reward-keyframes {
+  0% {
+    font-size: 1.5rem;
+    opacity: 1;
+    position: relative;
+    top: 0rem;
+  }
+  100% {
+    font-size: 0.7rem;
+    opacity: 0;
+    position: relative;
+    top: -1rem;
+    letter-spacing: 1rem;
+  }
+}
+
+.new-video-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: -1rem;
 }
 
-.check-container{
+.check-container {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.video-check-label{
+.video-check-label {
   font-size: 1rem;
 }
 
-.as-reply-to-container{
+.as-reply-to-container {
   display: flex;
   justify-content: space-between;
   margin: 0rem 2rem;
 }
 
-.as-reply-to-item{
+.as-reply-to-item {
   margin-top: 0rem;
 }
 
-.error-text{
+.error-text {
   color: red;
 }
 
-.login-button{
+.login-button {
   border: solid;
   border-radius: 0.5rem;
   padding: 0.25rem 1rem;
   width: 6rem;
 }
 
-.login-container{
+.login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 4rem;
 }
 
-.texts-container{
+.texts-container {
   padding: 0rem 1rem;
 }
 
-.content-item{
+.content-item {
   margin-top: 0rem;
 }
 
-.content-item-reply{
+.content-item-reply {
   margin-top: 0rem;
   margin-bottom: 0rem;
 }
 
-.reply-bar{
+.reply-bar {
   margin: 0rem;
 }
 
-.reply-button{
+.reply-button {
   cursor: pointer;
   text-decoration: underline;
-  color:rgb(187, 85, 38);
+  color: rgb(187, 85, 38);
 }
 
-.chat-button{
+.chat-button {
   position: fixed;
   left: 2rem;
   top: 85%;
@@ -185,7 +216,7 @@ a{
   height: 2.5rem;
 }
 
-.chat-notification-dot{
+.chat-notification-dot {
   top: -370%;
   left: 40%;
   color: red;
@@ -193,14 +224,14 @@ a{
   font-size: 6rem;
 }
 
-.chat-emoji{
+.chat-emoji {
   position: absolute;
   left: 0.5rem;
   top: -0.7rem;
   font-size: 1.5rem;
 }
 
-.chat-container{
+.chat-container {
   display: block;
   position: fixed;
   top: 20%;
@@ -214,33 +245,33 @@ a{
   z-index: 1;
 }
 
-.long-chat-container{
+.long-chat-container {
   padding: 0rem 1rem;
 }
 
-.chat-header{
+.chat-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 0rem 2rem;
 }
 
-.chat-name{
+.chat-name {
   text-transform: uppercase;
 }
 
-.chat-option{
+.chat-option {
   text-decoration: underline;
   cursor: pointer;
 }
 
-.chat-option-disabled{
+.chat-option-disabled {
   text-decoration: underline;
   cursor: pointer;
   opacity: 0.5;
 }
 
-.video-container{
+.video-container {
   padding-top: 4rem;
   padding-bottom: 0.5rem;
   position: fixed;
@@ -248,17 +279,17 @@ a{
   background-color: darkslateblue;
 }
 
-.video-frame{
+.video-frame {
   width: 95%;
   height: 30vh;
 }
 
-.video-title{
+.video-title {
   text-align: left;
   margin: 0rem 2.5%;
 }
 
-.interactions-container{
+.interactions-container {
   position: fixed;
   width: 100%;
   max-height: 40%;
@@ -269,53 +300,53 @@ a{
   flex-direction: column-reverse;
 }
 
-.comment-container{
+.comment-container {
   margin: 0rem;
   padding: 0.5rem 1rem;
 }
 
-.comment{
+.comment {
   text-align: right;
   padding: 0rem;
   margin: 0rem;
 }
 
-.new-interaction-container{
+.new-interaction-container {
   position: fixed;
   width: 100%;
   bottom: 0rem;
   background-color: slategrey;
 }
 
-.red-overlay{
-  background-color: rgba(255,0,0,0.5);
+.red-overlay {
+  background-color: rgba(255, 0, 0, 0.5);
   width: 7%;
   height: 2rem;
   position: absolute;
   left: 47%;
 }
 
-.user-container{
+.user-container {
   margin-top: 4rem;
 }
 
-.user-name-container{
+.user-name-container {
   display: flex;
   justify-content: center;
   flex-direction: row;
 }
 
-.user-items-container{
+.user-items-container {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 1rem;
 }
 
-.user-items-container p{
+.user-items-container p {
   margin: 0rem;
 }
 
-.faction-badge{
+.faction-badge {
   margin-top: 1rem;
   margin-left: 1rem;
   background-color: white;
@@ -325,28 +356,28 @@ a{
   border-radius: 0.5rem;
 }
 
-.faction-badge-flag{
+.faction-badge-flag {
   margin: 0rem;
 }
 
-.faction-badge-toilet{
+.faction-badge-toilet {
   margin-top: -0.5rem;
 }
 
-.wall-container{
+.wall-container {
   width: 100%;
-  overflow:hidden;
+  overflow: hidden;
 }
 
-.draggable{
+.draggable {
   position: relative;
   margin: 0rem;
   padding: 0rem;
   width: auto;
-  z-index:1;
+  z-index: 1;
 }
 
-.wall-input{
+.wall-input {
   margin: 0;
   padding: 0;
   z-index: 1;
@@ -355,11 +386,11 @@ a{
   border: none;
 }
 
-.wall-input:focus-visible{
+.wall-input:focus-visible {
   outline: none;
 }
 
-.wall-toolbar{
+.wall-toolbar {
   margin-top: 3rem;
   background-color: slategrey;
   display: flex;
@@ -367,18 +398,18 @@ a{
   align-items: center;
 }
 
-.colours{
+.colours {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
 }
 
-.sticker{
+.sticker {
   position: absolute;
 }
 
-.new-sticker-button{
+.new-sticker-button {
   border: solid;
   border-radius: 0.5rem;
   padding: 0.25rem 1rem;

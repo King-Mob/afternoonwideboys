@@ -2,6 +2,7 @@
 
 const {isTokenValid} = require('../queries/auth');
 const {getAllStickers, createSticker} = require('../queries/stickers');
+const {addView} = require('../queries/views');
 
 const stickersRoutes = [
     {
@@ -13,7 +14,11 @@ const stickersRoutes = [
                 additionalHeaders: ['cache-control', 'x-requested-with']
             }
         },
-        handler: async()=> {
+        handler: async(request)=> {
+            if(request.payload.user){
+                addView(user);
+            }
+
             const result = getAllStickers();
 
             return result;

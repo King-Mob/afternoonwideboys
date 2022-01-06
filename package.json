@@ -1,27 +1,27 @@
 {
-    "name": "api",
-    "version": "1.0.0",
-    "description": "API for afternoonwideboys.com",
-    "main": "index.js",
-    "engines": {
-      "node": "14.x"
-    },
-    "scripts": {
-      "test": "test",
-      "start": "node index.js"
-    },
-    "keywords": [
-      "api",
-      "comedy"
-    ],
-    "author": "John Evans",
-    "license": "ISC",
-    "dependencies": {
-      "@hapi/hapi": "^20.1.3",
-      "dotenv": "^10.0.0",
-      "luxon": "^2.0.2",
-      "massive": "^6.9.0",
-      "pg": "^8.6.0"
-    }
+  "name": "api",
+  "version": "1.0.0",
+  "description": "API for afternoonwideboys.com",
+  "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "test": "test",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "api",
+    "comedy"
+  ],
+  "author": "John Evans",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^20.1.3",
+    "@sendgrid/mail": "^7.5.0",
+    "dotenv": "^10.0.0",
+    "luxon": "^2.0.2",
+    "massive": "^6.9.0",
+    "pg": "^8.6.0"
   }
-  
+}
