@@ -51,6 +51,49 @@ const sendNotifications = async () => {
   return { success: true };
 };
 
+const checkRole = async (userId) => {
+  const db = await _db;
+
+  const role = await db.Roles.findOne({
+    UserHaver: userId,
+    Type: 2,
+  });
+
+  if (role) return { success: true };
+  else return { success: false };
+};
+
+const sendEmail = async (email) => {
+  const db = await _db;
+  const sgMail = require("@sendgrid/mail");
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+  const users = await db.EmailPreferencesWithHavers.find({
+    Preference: "loves",
+  });
+
+  users.forEach((user) => {
+    const msg = {
+      to: user.Email,
+      from: {
+        name: email.from.name,
+        email: email.from.email + "@afternoonwideboys.com",
+      },
+      subject: user.Name + ", " + email.subject,
+      text: email.text,
+      html: `<p>${email.text}</p>`,
+    };
+
+    sgMail.send(msg).catch((error) => {
+      console.error(error);
+    });
+  });
+
+  return { success: true };
+};
+
 module.exports = {
   sendNotifications,
+  checkRole,
+  sendEmail,
 };

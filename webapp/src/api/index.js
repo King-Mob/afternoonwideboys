@@ -257,3 +257,28 @@ export const tryNewSticker = async (user, newSticker) => {
   const result = await fetch(`${baseUrl}/stickers`, newStickerRequest);
   return result.json();
 };
+
+export const tryGetEmailRole = async (user) => {
+  const result = await fetch(`${baseUrl}/emails/roles/${user.id}`);
+  return result.json();
+};
+
+export const trySendEmail = async (user, email) => {
+  const newEmailRequest = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      userId: user.id,
+      token: {
+        type: 5,
+        value: user.token,
+      },
+    }),
+  };
+
+  const result = await fetch(`${baseUrl}/emails`, newEmailRequest);
+  return result.json();
+};

@@ -1,28 +1,23 @@
-import './App.css';
-import React, {useState, useEffect} from 'react';
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import Home from './Screens/Home';
-import User from './Screens/User';
-import SignUp from './Screens/SignUp';
-import Login from './Screens/Login';
-import Video from './Screens/Video';
-import Wall from './Screens/Wall';
-import {getCookie} from './utils/cookies';
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Home from "./Screens/Home";
+import User from "./Screens/User";
+import SignUp from "./Screens/SignUp";
+import Login from "./Screens/Login";
+import Video from "./Screens/Video";
+import Wall from "./Screens/Wall";
+import Email from "./Screens/Email";
+import { getCookie } from "./utils/cookies";
 
 function App() {
   const [user, setUser] = useState(null);
 
-  useEffect(()=>{
+  useEffect(() => {
     const userCookie = getCookie("user");
 
-    if(userCookie)
-        setUser(JSON.parse(userCookie));
-  },[]);
+    if (userCookie) setUser(JSON.parse(userCookie));
+  }, []);
 
   return (
     <Router>
@@ -31,30 +26,35 @@ function App() {
           <Link to="/">
             <h1 className="title">afternoonwideboys</h1>
           </Link>
-        </header> 
+        </header>
         <Switch>
           <Route path="/user/:userId">
-              <User user={user} setUser={setUser} />
+            <User user={user} setUser={setUser} />
           </Route>
           <Route path="/signup">
-              <SignUp user={user} setUser={setUser}/>
-              <p>get ready</p>
+            <SignUp user={user} setUser={setUser} />
+            <p>get ready</p>
           </Route>
           <Route path="/login">
-              <Login user={user} setUser={setUser}/>
-              <Link to="/signup"><p>Sign up</p></Link>
+            <Login user={user} setUser={setUser} />
+            <Link to="/signup">
+              <p>Sign up</p>
+            </Link>
           </Route>
-          <Route path ="/video/:videoId">
-              <Video user={user} />
+          <Route path="/video/:videoId">
+            <Video user={user} />
           </Route>
-          <Route path ="/wall">
-              <Wall user={user} />
+          <Route path="/wall">
+            <Wall user={user} />
+          </Route>
+          <Route path="/email">
+            <Email user={user} />
           </Route>
           <Route path="/">
-              <Home user={user} setUser={setUser}/>
+            <Home user={user} setUser={setUser} />
           </Route>
         </Switch>
-    </div>
+      </div>
     </Router>
   );
 }

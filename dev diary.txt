@@ -446,6 +446,76 @@ put lots of images of banks there, and then when a picture is uploaded, replace 
 
 on the send and give and share buttons, don't refresh, flash THANKS in big letters
 
+//////
+
+
+awb email system
+
+
+1. privileged users send emails to all users
+
+	- need email privilege, don't think database has that at present, already have role types and roles, so just add a new type and then get that going.
+		added a new type on the local db
+		new role type of email sender
+		new role for my user
+	
+	- screen for email, check if privilege exists, then give text box for email
+	- api call to send email
+	
+	email subject could be radio buttons and then perhaps an "other"
+	
+	need to validate the token in send emails
+
+
+
+2. collect points using links in emails?
+
+3. different types of emails from templates?
+
+4. sign up to the email experience
+
+5. deliberately annoying unsubscribe process
+	We're so sorry that you feel the need to make this a problem.
+	
+	Please enter the email address you wish to unsubscribe with.
+
+	please give the reason for ubsubscribing "there is no joy in my heart" "Tidying up loose ends before suicide" "Want to hurt John and Tom only way I know how" 
+	
+	Other:[] 
+	
+	*reason invalid
+	
+	slide this slider to the left if you don't want to subscribe
+	
+	check every 3rd box
+	
+	slide this slider to the right
+	
+	enter the following text "I solemnly insist that I no longer want to receive emails from the afternoonwideboys"
+	
+	tick the box, I have read and agreed to the unsubscription policy.
+		liar, we can tell you haven't opened it
+		
+	please don't untoggle this box if you don't want to not unsubscribe
+	
+	"thank you for choosing to stay with us"
+	
+	error: unsubscription unsuccessful for unknown reason, please contact newsletter.management@afternoonwideboys.com to contnue unsubscription process, quoting unsubscription attempt 59345-1297
+	
+	We're sorry for any inconvenience caused by your harmful choices and hope you have a pleasant day.	
+	
+	sounds playing throughout? " *moans* *wails* why are you doing this? I don't understand why this is happening *sobs* "
+
+
+
+
+
+
+
+
+
+
+
 
 
 

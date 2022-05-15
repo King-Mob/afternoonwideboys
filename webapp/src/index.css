@@ -416,3 +416,15 @@ a {
   width: fit-content;
   margin-top: 0rem;
 }
+
+.email-container {
+  padding-top: 4rem;
+}
+
+.email-input {
+  width: 90%;
+}
+
+.email-subject-radio {
+  display: inline;
+}
