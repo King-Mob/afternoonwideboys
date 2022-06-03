@@ -282,3 +282,30 @@ export const trySendEmail = async (user, email) => {
   const result = await fetch(`${baseUrl}/emails`, newEmailRequest);
   return result.json();
 };
+
+export const tryGetInviteRole = async (user) => {
+  const result = await fetch(`${baseUrl}/invite/roles/${user.id}`);
+  return result.json();
+};
+
+export const tryCreateInvite = async (user, inviteCode) => {
+  const newInviteRequest = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      newInvite: {
+        value: inviteCode,
+      },
+      userId: user.id,
+      token: {
+        type: 5,
+        value: user.token,
+      },
+    }),
+  };
+
+  const result = await fetch(`${baseUrl}/invite`, newInviteRequest);
+  return result.json();
+};

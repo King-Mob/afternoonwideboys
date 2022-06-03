@@ -8,6 +8,7 @@ import Login from "./Screens/Login";
 import Video from "./Screens/Video";
 import Wall from "./Screens/Wall";
 import Email from "./Screens/Email";
+import Invite from "./Screens/Invite";
 import { getCookie } from "./utils/cookies";
 
 function App() {
@@ -49,6 +50,9 @@ function App() {
           </Route>
           <Route path="/email">
             <Email user={user} />
+          </Route>
+          <Route path="/invite">
+            <Invite user={user} />
           </Route>
           <Route path="/">
             <Home user={user} setUser={setUser} />

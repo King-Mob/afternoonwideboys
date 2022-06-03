@@ -428,3 +428,11 @@ a {
 .email-subject-radio {
   display: inline;
 }
+
+.invite-container {
+  padding-top: 4rem;
+}
+
+.invite-input {
+  width: 90%;
+}
