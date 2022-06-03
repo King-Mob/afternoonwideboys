@@ -12,7 +12,7 @@ const inviteRoutes = [
       },
     },
     handler: async (request) => {
-      const { token, newInvite } = request.payload;
+      const { userId, token, newInvite } = request.payload;
 
       if ((await isTokenValid(token)) == false)
         return {
