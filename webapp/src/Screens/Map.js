@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Map, { Marker } from "react-map-gl";
-import "mapbox-gl";
 
 const token = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
