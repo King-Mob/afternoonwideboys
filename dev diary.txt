@@ -509,9 +509,57 @@ awb email system
 
 
 
-style invites
+
 api call
-token for inviter permission
+token for inviter permission, plus api call for it
+
+
+style invites
+
+
+
+price and time:
+
+
+
+
+///////
+
+Map.
+
+Need mapbox account with styled map
+
+
+Get unlocked markers, either via localStorage or database
+
+
+Full localstorage flow needs
+
+1) check if exists
+a) if not, create new
+2) be modified by visiting coded pages
+3) page names and components linked in object?
+
+
+add clown favicon and save icon
+
+
+need a marker -> done
+marker needs page 
+marker needs unlock code page -> done
+
+
+need more markers
+makers need pages
+
+
+there's definitely a more Reacty way of doing it than this, but that might have to wait for tomorrow.
+
+
+
+
+
+
 
 
 

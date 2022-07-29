@@ -9,7 +9,10 @@ import Video from "./Screens/Video";
 import Wall from "./Screens/Wall";
 import Email from "./Screens/Email";
 import Invite from "./Screens/Invite";
+import Map from "./Screens/Map";
+import Unlock from "./Screens/Unlock";
 import { getCookie } from "./utils/cookies";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -53,6 +56,12 @@ function App() {
           </Route>
           <Route path="/invite">
             <Invite user={user} />
+          </Route>
+          <Route path="/map/nsfd78thjsdfksdjknvfwr9">
+            <Unlock markerId={0} />
+          </Route>
+          <Route path="/map">
+            <Map user={user} />
           </Route>
           <Route path="/">
             <Home user={user} setUser={setUser} />

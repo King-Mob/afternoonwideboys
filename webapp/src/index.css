@@ -436,3 +436,7 @@ a {
 .invite-input {
   width: 90%;
 }
+
+.map-container {
+  padding-top: 4rem;
+}
