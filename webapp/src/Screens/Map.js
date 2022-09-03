@@ -1,36 +1,35 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Map, { Marker } from "react-map-gl";
+import { markers } from "../data/markers";
 
 const token = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
-const MarkerContent = ({ unlocked }) => {
+const MarkerContent = ({ unlocked, data }) => {
   const [active, setActive] = useState(false);
 
   return (
     <div onClick={() => setActive(!active)}>
       {active &&
         (unlocked ? (
-          <p>Marker One, including video and characters</p>
+          <div className="grey-background">
+            <p>{data.name}, including video and characters</p>
+            <Link to={`/map/location/${data.url}`}>
+              <p>Open location</p>
+            </Link>
+          </div>
         ) : (
-          <p>you'll need to unlock this location to see what's here</p>
+          <p className="grey-background">
+            you'll need to unlock this location to see what's here
+          </p>
         ))}
-      <p>{unlocked ? "🤡" : "🔒"}</p>
+      <p style={{ margin: 0 }}>{unlocked ? "🤡" : "🔒"}</p>
     </div>
   );
 };
 
 const MapView = ({ user }) => {
-  //const {markers, setMarkers} = useState([]);
   const [mapState, setMapState] = useState();
-
-  const marker = {
-    id: 0,
-    longitude: -1.25696,
-    latitude: 51.754144,
-    code: "nsfd78thjsdfksdjknvfwr9",
-  };
-
-  const markers = [marker];
 
   useEffect(() => {
     let mapState;
@@ -65,10 +64,12 @@ const MapView = ({ user }) => {
             longitude={marker.longitude}
             latitude={marker.latitude}
             anchor="bottom"
+            key={marker.id}
           >
             {mapState && (
               <MarkerContent
                 unlocked={mapState.markersUnlocked.includes(marker.id)}
+                data={marker}
               />
             )}
           </Marker>

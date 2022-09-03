@@ -560,6 +560,15 @@ there's definitely a more Reacty way of doing it than this, but that might have 
 
 
 
+/unlock-location/iuh098ytd4e76yuytfi98iug
+
+
+Maybe the locations should be a modal instead? not exactly sure how that works, maybe just query params in the link?
+
+
+
+Also, locations need to link to other locations, and you do need pages for locked locations, so they can be linked to
+
 
 
 

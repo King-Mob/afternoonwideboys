@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./Screens/Home";
+import Text from "./Screens/Text";
 import User from "./Screens/User";
 import SignUp from "./Screens/SignUp";
 import Login from "./Screens/Login";
@@ -11,6 +12,7 @@ import Email from "./Screens/Email";
 import Invite from "./Screens/Invite";
 import Map from "./Screens/Map";
 import Unlock from "./Screens/Unlock";
+import SecondMarker from "./Screens/Locations/SecondMarker";
 import { getCookie } from "./utils/cookies";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -57,14 +59,20 @@ function App() {
           <Route path="/invite">
             <Invite user={user} />
           </Route>
-          <Route path="/map/nsfd78thjsdfksdjknvfwr9">
-            <Unlock markerId={0} />
+          <Route path="/map/unlock-location/:code">
+            <Unlock />
+          </Route>
+          <Route path="/map/location/the-second-marker">
+            <SecondMarker />
           </Route>
           <Route path="/map">
             <Map user={user} />
           </Route>
+          <Route path="/text">
+            <Text user={user} setUser={setUser} />
+          </Route>
           <Route path="/">
-            <Home user={user} setUser={setUser} />
+            <Home />
           </Route>
         </Switch>
       </div>

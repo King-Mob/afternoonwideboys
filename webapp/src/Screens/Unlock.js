@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
+import { markers } from "../data/markers";
 
-const Unlock = ({ markerId }) => {
+const Unlock = ({}) => {
+  const { code } = useParams();
+  const [location, setLocation] = useState();
   const [unlocked, setUnlocked] = useState(false);
 
   useEffect(() => {
@@ -16,7 +19,16 @@ const Unlock = ({ markerId }) => {
       localStorage.setItem("awb-mapgame", JSON.stringify(mapState));
     }
 
-    if (!mapState.markersUnlocked.includes(markerId))
+    let markerId;
+
+    markers.forEach((marker) => {
+      if (marker.code === code) {
+        markerId = marker.id;
+        setLocation(marker);
+      }
+    });
+
+    if (markerId && !mapState.markersUnlocked.includes(markerId))
       mapState.markersUnlocked.push(markerId);
 
     localStorage.setItem("awb-mapgame", JSON.stringify(mapState));
@@ -26,8 +38,8 @@ const Unlock = ({ markerId }) => {
 
   return (
     <div className="map-container">
-      <p>Unlocking marker {markerId}</p>
-      {unlocked && <Redirect to="/map" />}
+      <p>Unlocking marker</p>
+      {unlocked && <Redirect to={`/map/location/${location.url}`} />}
     </div>
   );
 };

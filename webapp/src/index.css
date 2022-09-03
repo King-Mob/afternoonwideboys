@@ -440,3 +440,20 @@ a {
 .map-container {
   padding-top: 4rem;
 }
+
+.grey-background {
+  background-color: slategrey;
+}
+
+.clown-title {
+  margin: 0;
+  font-size: 6rem;
+}
+
+.home-text {
+  padding: 0.5rem;
+}
+
+.about-container {
+  padding-top: 4rem;
+}
